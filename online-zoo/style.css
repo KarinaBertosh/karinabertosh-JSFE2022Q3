@@ -10,6 +10,33 @@
   width: 1160px;
 }
 
+.orange-button {
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 103px;
+  height: 41px;
+  border: 0;
+  cursor: pointer;
+  width: 298px;
+  height: 54px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.orange-button:hover {
+  background: #e47209;
+}
+.orange-button:active {
+  background: #4b9200;
+}
+
+a {
+  text-decoration: none;
+}
+
 .header-background {
   height: 80px;
   background-color: #000000;
@@ -120,29 +147,82 @@
   margin-right: 100px;
 }
 
-.orange-button {
-  font-size: 16px;
-  color: #fff;
-  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
-  border-radius: 25px;
-  justify-content: center;
-  align-items: center;
-  width: 103px;
-  height: 41px;
-  border: 0;
-  cursor: pointer;
-  width: 298px;
-  height: 54px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.orange-button:hover {
-  background: #e47209;
-}
-.orange-button:active {
-  background: #4b9200;
+.backstage {
+  position: relative;
+  padding-top: 140px;
 }
 
-a {
-  text-decoration: none;
+.backstage-field {
+  display: flex;
+  flex-direction: inherit;
+  align-items: center;
+}
+.backstage-field__description {
+  margin-left: 87px;
+  font-style: normal;
+  font-weight: 400;
+  color: #333b41;
+}
+.backstage-field__title {
+  font-size: 48px;
+  line-height: 120%;
+}
+.backstage-field__text1 {
+  font-size: 16px;
+  line-height: 130%;
+  margin-top: 20px;
+}
+.backstage-field__subtitle {
+  font-size: 24px;
+  line-height: 120%;
+  margin-top: 54px;
+}
+.backstage-field__text2 {
+  font-size: 16px;
+  line-height: 140%;
+  margin-top: 34px;
+}
+.backstage-field__flower_tree {
+  position: absolute;
+  right: 0;
+  top: 12px;
+}
+
+.pets {
+  width: 1158px;
+  height: 872px;
+  margin-top: 180px;
+}
+.pets__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.pets__card {
+  border-radius: 5px;
+  border: 1px solid #FA6F32;
+  margin-bottom: 20px;
+}
+.pets__card__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 13px;
+  padding-left: 16px;
+  height: 60px;
+  padding-top: 8px;
+}
+.pets__card .title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: #000000;
+}
+.pets__card .text {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 120%;
+  color: #000000;
 }/*# sourceMappingURL=style.css.map */
