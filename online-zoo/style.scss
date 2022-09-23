@@ -19,67 +19,133 @@
   .header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
-    .header-navigation {
+    .header__logo {
+      padding: 3.55px 4.75px;
       display: flex;
       align-items: center;
-      width: 615px;
-      .header-navigation__logo {
-        padding: 3.55px 4.75px;
+      width: 82px;
+      height: 52px;
+      position: relative;
+      font-size: 19px;
+      text-align: center;
+      border: 1px solid #ffffff;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 2px;
+      cursor: pointer;
+      margin-right: 63px;
+      h1 {
+        font-size: 19px;
+        color: #ffffff;
+        font-weight: 400;
+      }
+      img {
+        position: absolute;
+        top: 23px;
+        left: 10px;
+      }
+    }
+    .header__navigation {
+      width: 100%;
+      & > ul > li:first-child {
+        width: 470px;
+      }
+      ul {
         display: flex;
         align-items: center;
-        width: 82px;
-        height: 52px;
-        position: relative;
-        font-size: 19px;
-        text-align: center;
-        border: 1px solid #ffffff;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 2px;
-        cursor: pointer;
-        margin-right: 63px;
-        h1 {
-          font-size: 19px;
-          color: #ffffff;
-          font-weight: 400;
-        }
-        img {
-          position: absolute;
-          top: 23px;
-          left: 10px;
-        }
-      }
-      .header-navigation__menu {
-        ul {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 470px;
+        justify-content: space-between;
+        li > a {
           color: #ffffff;
           font-family: "Roboto";
-          font-style: normal;
           font-weight: 500;
           font-size: 16px;
           list-style-type: none;
-          .active {
+          &.active {
             background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
           }
+          &:hover {
+            color: red;
+          }
         }
-      }
-    }
 
-    .header-designed {
-      color: #ffffff;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 140%;
+
+      }
     }
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+.favorite-animal {
+  height: 702px;
+  background-image: url(./assets/images/panda.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 106.496px;
+  line-height: 75%;
+  text-align: center;
+  text-transform: uppercase;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .favorite-animal__text {
+    position: relative;
+    height: 400px;
+    width: 500px;
+    margin-top: 88px;
+    z-index: 1;
+    span {
+      color: #ffee2e;
+    }
+    &::after {
+      position: absolute;
+      width: 465px;
+      height: 465px;
+      content: "";
+      background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+      top: -74px;
+      left: -73px;
+      border-radius: 50%;
+      z-index: -1;
+    }
+  }
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+    margin-right: 100px;
+  }
+}
+
+.orange-button {
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 103px;
+  height: 41px;
+  border: 0;
+  cursor: pointer;
+  width: 298px;
+  height: 54px;
+  text-transform: uppercase;
+  font-weight: 500;
+  &:hover {
+    background: #e47209;
+  }
+  &:active {
+    background: #4b9200;
+  }
+}
+
+a {
+  text-decoration: none;
+ }

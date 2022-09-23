@@ -19,14 +19,8 @@
 .header-background .header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
-.header-background .header-container .header-navigation {
-  display: flex;
-  align-items: center;
-  width: 615px;
-}
-.header-background .header-container .header-navigation .header-navigation__logo {
+.header-background .header-container .header__logo {
   padding: 3.55px 4.75px;
   display: flex;
   align-items: center;
@@ -41,40 +35,114 @@
   cursor: pointer;
   margin-right: 63px;
 }
-.header-background .header-container .header-navigation .header-navigation__logo h1 {
+.header-background .header-container .header__logo h1 {
   font-size: 19px;
   color: #ffffff;
   font-weight: 400;
 }
-.header-background .header-container .header-navigation .header-navigation__logo img {
+.header-background .header-container .header__logo img {
   position: absolute;
   top: 23px;
   left: 10px;
 }
-.header-background .header-container .header-navigation .header-navigation__menu ul {
+.header-background .header-container .header__navigation {
+  width: 100%;
+}
+.header-background .header-container .header__navigation > ul > li:first-child {
+  width: 470px;
+}
+.header-background .header-container .header__navigation ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 470px;
+}
+.header-background .header-container .header__navigation ul li > a {
   color: #ffffff;
   font-family: "Roboto";
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   list-style-type: none;
 }
-.header-background .header-container .header-navigation .header-navigation__menu ul .active {
+.header-background .header-container .header__navigation ul li > a.active {
   background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.header-background .header-container .header-designed {
-  color: #ffffff;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 140%;
+.header-background .header-container .header__navigation ul li > a:hover {
+  color: red;
 }
 
-/*# sourceMappingURL=style.css.map *//*# sourceMappingURL=style.css.map */
+.favorite-animal {
+  height: 702px;
+  background-image: url(./assets/images/panda.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 106.496px;
+  line-height: 75%;
+  text-align: center;
+  text-transform: uppercase;
+}
+.favorite-animal__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.favorite-animal .favorite-animal__text {
+  position: relative;
+  height: 400px;
+  width: 500px;
+  margin-top: 88px;
+  z-index: 1;
+}
+.favorite-animal .favorite-animal__text span {
+  color: #ffee2e;
+}
+.favorite-animal .favorite-animal__text::after {
+  position: absolute;
+  width: 465px;
+  height: 465px;
+  content: "";
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+  top: -74px;
+  left: -73px;
+  border-radius: 50%;
+  z-index: -1;
+}
+.favorite-animal__button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 60px;
+  margin-right: 100px;
+}
+
+.orange-button {
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 103px;
+  height: 41px;
+  border: 0;
+  cursor: pointer;
+  width: 298px;
+  height: 54px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.orange-button:hover {
+  background: #e47209;
+}
+.orange-button:active {
+  background: #4b9200;
+}
+
+a {
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */
