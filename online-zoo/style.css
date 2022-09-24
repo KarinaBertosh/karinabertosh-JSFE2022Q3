@@ -141,8 +141,6 @@ a {
   z-index: -1;
 }
 .favorite-animal__button {
-  display: flex;
-  justify-content: flex-end;
   margin-top: 60px;
   margin-right: 100px;
 }
@@ -189,21 +187,36 @@ a {
 }
 
 .pets {
-  width: 1158px;
-  height: 872px;
+  position: relative;
   margin-top: 180px;
 }
-.pets__cards {
+.pets .pets__grass {
+  position: absolute;
+}
+.pets .pets__grass.pets__grass-right {
+  bottom: 0;
+  right: 0;
+}
+.pets .pets__grass.pets__grass-left {
+  bottom: 0;
+  left: 0;
+}
+.pets .pets-container {
+  position: relative;
+  width: 1158px;
+}
+.pets .pets-container__cards {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.pets__card {
+.pets .pets-container__card {
   border-radius: 5px;
-  border: 1px solid #FA6F32;
+  border: 1px solid #fa6f32;
   margin-bottom: 20px;
 }
-.pets__card__footer {
+.pets .pets-container__card__footer {
   display: flex;
   justify-content: space-between;
   padding-right: 13px;
@@ -211,7 +224,7 @@ a {
   height: 60px;
   padding-top: 8px;
 }
-.pets__card .title {
+.pets .pets-container__card .title {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -219,10 +232,40 @@ a {
   text-transform: uppercase;
   color: #000000;
 }
-.pets__card .text {
+.pets .pets-container__card .text {
   font-style: normal;
   font-weight: 300;
   font-size: 15px;
   line-height: 120%;
   color: #000000;
+}
+.pets .pets-container__arrow {
+  position: absolute;
+  top: 403px;
+  background: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.pets .pets-container__arrow:hover {
+  background: #e47209;
+}
+.pets .pets-container__arrow:active {
+  background: #4b9200;
+}
+.pets .pets-container__arrow.pets-container__arrow-right {
+  right: -82px;
+}
+.pets .pets-container__arrow.pets-container__arrow-left {
+  left: -82px;
+}
+.pets .pets-container__arrow.pets-container__arrow-left > img {
+  rotate: 180deg;
+}
+.pets .pets-container__button {
+  margin: 60px auto 100px;
 }/*# sourceMappingURL=style.css.map */
