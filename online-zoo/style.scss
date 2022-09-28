@@ -122,7 +122,7 @@ a {
     flex-direction: column;
     align-items: flex-end;
   }
-  .favorite-animal__text {
+  &__text {
     position: relative;
     height: 400px;
     width: 500px;
@@ -219,7 +219,7 @@ a {
       border: 1px solid #fa6f32;
       margin-bottom: 20px;
       cursor: pointer;
-      &:hover{
+      &:hover {
         transform: scale(1.065);
         transition: all 0.5s;
       }
@@ -398,7 +398,6 @@ a {
   position: relative;
   padding: 140px 0 180px;
   &__field {
-    
     &__title {
       font-weight: 400;
       font-size: 36px;
@@ -513,18 +512,18 @@ a {
         cursor: pointer;
         margin: 1px 0;
         &:hover {
-          background: #E47209;
+          background: #e47209;
         }
         &:active {
-          background: #4B9200;
+          background: #4b9200;
         }
       }
     }
   }
   &__leaf {
     position: absolute;
-    right: -5px;
-    bottom: -120px;
+    right: 0px;
+    bottom: -100px;
   }
 }
 
@@ -680,4 +679,34 @@ a {
       }
     }
   }
+}
+
+@media (max-width: 1000px) {
+  .wrapper {
+    width: 940px;
+  }
+
+  .favorite-animal {
+    height: 504px;
+    font-size: 85px;
+    &__text {
+      height: 320px;
+      width: 400px;
+      margin-top: 42px;
+      margin-right: 60px;
+    }
+    .favorite-animal__text::after {
+      width: 367px;
+      height: 367px;
+      top: -53px;
+      left: -58px;
+    }
+    .favorite-animal__button {
+      margin-top: 40px;
+    }
+  }
+  .backstage-field {
+    height: 427px;
+    margin: 100px 30px 0;
+}
 }
