@@ -406,7 +406,6 @@ a {
       color: #333b41;
       margin-top: 10px;
       margin-left: 99px;
-      width: 863px;
       a {
         color: #333b41;
         cursor: pointer;
@@ -428,6 +427,10 @@ a {
       align-items: center;
       width: 764px;
       margin-top: 40px;
+      &__card {
+        width: 168px;
+        height: 244px;
+      }
 
       &__header {
         width: 168px;
@@ -448,6 +451,16 @@ a {
       }
       &__header-arrow {
         padding-bottom: 50px;
+      }
+      &__header-arrow-green {
+        display: flex;
+        width: 301.8px;
+        justify-content: space-between;
+        margin-bottom: -36px;
+        &__right {
+        }
+        &__left {
+        }
       }
     }
     &__button {
@@ -778,6 +791,9 @@ a {
   .pets-container__card:nth-child(8) {
     order: 8;
   }
+  .pickfeed__field__pay__header-arrow-green {
+    display: none;
+  }
 }
 
 //1000
@@ -924,6 +940,62 @@ a {
       }
     }
   }
+
+  .pickfeed {
+    padding: 30px 30px 50px;
+
+    .pickfeed__field {
+      padding: 30px 47px 50px;
+
+      &__text1 {
+        margin: 20px 0 0;
+      }
+      &__text2 {
+        margin: 20px 0 0;
+      }
+      &__text3 {
+        margin: 10px 0 0;
+      }
+      &__text4 {
+        margin-top: 40px;
+      }
+      &__button {
+        margin: 40px auto 0;
+      }
+    }
+    &__header-arrow-green {
+      display: none;
+    }
+  }
+
+  .testimonials {
+    padding: 100px 30px 140px;
+    &__field {
+      &__containers {
+        margin-top: 47px;
+        width: 940px;
+      }
+      
+    }
+    button {
+      margin-top: 32px;
+      border-radius: 5px;
+    }
+    &__slider {
+      margin-top: 20px;
+      input[type="range"] {
+        width: 390px;
+      }
+    }
+  }
+  &__leaf {
+    position: absolute;
+    right: 0px;
+    bottom: -100px;
+  }
+}
+.testimonials__field__container:nth-child(4) {
+  display: none;
 }
 
 //640
@@ -1070,14 +1142,10 @@ a {
           padding: 0 0 0 12.5px;
         }
         .title {
-
           font-size: 12.4695px;
-
         }
         .text {
-
           font-size: 11.6901px;
-
         }
         > img {
           width: 285.24px;
@@ -1111,6 +1179,55 @@ a {
         top: -639px;
       }
     }
+  }
+
+  .pickfeed {
+    padding: 20px 0;
+    position: relative;
+
+    .pickfeed__field {
+      padding: 10px 20px 60px;
+
+      h3 {
+        font-size: 42px;
+      }
+      &__text1 {
+        font-size: 22px;
+        margin: 20px 0 0;
+      }
+      &__text2 {
+        margin: 20px 0 0;
+      }
+      &__text3 {
+        margin: 10px 0 0;
+      }
+      &__text4 {
+        margin: 30px 0 0;
+      }
+      &__pay {
+        width: 100%;
+        margin-top: 20px;
+
+        &__header-arrow {
+          display: none;
+        }
+      }
+    }
+    &__button {
+      margin: 40px auto 0;
+      display: flex;
+    }
+  }
+
+  .pickfeed__field__pay__header-arrow-green__right {
+    position: absolute;
+    top: 367px;
+    left: 172px;
+  }
+  .pickfeed__field__pay__header-arrow-green__left {
+    position: absolute;
+    top: 367px;
+    right: 172px;
   }
 }
 
@@ -1207,5 +1324,170 @@ a {
       height: 217px;
       top: -9px;
     }
+  }
+
+  .pets-container__card:nth-child(1) {
+    order: 1;
+    margin-bottom: 0px;
+  }
+  .pets-container__card:nth-child(2) {
+    order: 2;
+    margin-bottom: 0px;
+  }
+  .pets-container__card:nth-child(3) {
+    order: 5;
+    margin-bottom: 0px;
+    display: none;
+  }
+  .pets-container__card:nth-child(4) {
+    order: 7;
+    margin-bottom: 0px;
+    display: none;
+  }
+  .pets-container__card:nth-child(5) {
+    order: 6;
+    margin-bottom: 0px;
+    display: none;
+  }
+  .pets-container__card:nth-child(6) {
+    order: 6;
+    margin-bottom: 0px;
+    display: none;
+  }
+  .pets-container__card:nth-child(7) {
+    order: 3;
+    margin-bottom: 0px;
+  }
+  .pets-container__card:nth-child(8) {
+    order: 4;
+    margin-bottom: 0px;
+  }
+
+  .pets {
+    padding: 40px 0 60px;
+
+    .pets-container {
+      width: 285.24px;
+
+      &__cards {
+        width: 285.24px;
+        height: 1388px;
+      }
+
+      &__card {
+        width: 283.24px;
+        height: 332px;
+        margin: 0;
+        &__footer {
+          height: 46.76px;
+          padding: 0 0 0 12.5px;
+        }
+        .title {
+          font-size: 12.4695px;
+        }
+        .text {
+          font-size: 11.6901px;
+        }
+        > img {
+          width: 283.24px;
+          height: 285.24px;
+        }
+      }
+    }
+    &__button {
+      margin: 20px auto 0;
+    }
+    .pets__grass {
+      &.pets__grass-right {
+        width: 85px;
+        height: 71px;
+        right: 0px;
+        top: 1495px;
+      }
+      &.pets__grass-left {
+        width: 138px;
+        left: -35px;
+        height: 72px;
+      }
+    }
+  }
+  .pets2 {
+    width: 181px;
+
+    &__arrow {
+      &__right {
+        display: none;
+      }
+      &__left {
+        display: none;
+      }
+      &__button {
+        margin: 39px auto 0;
+        display: flex;
+      }
+    }
+  }
+
+  .pickfeed {
+    position: relative;
+    padding: 20px 10px;
+    a {
+      display: flex;
+    }
+    .pickfeed__field {
+      padding: 20px 3px 40px;
+      h3 {
+        font-size: 24px;
+      }
+      &__text1 {
+        font-size: 18px;
+        margin: 10px auto 0;
+        text-align: center;
+      }
+      &__text2 {
+        display: none;
+      }
+      &__text3 {
+        display: none;
+      }
+      &__text4 {
+        font-size: 24px;
+        margin-top: 20px;
+        text-align: center;
+      }
+      &__pay {
+        width: 168px;
+        height: 715px;
+        margin-top: 20px;
+        flex-direction: column;
+        &__card {
+          width: 168px;
+          height: 231px;
+        }
+        &__header {
+        }
+        &__header-text {
+          margin-top: 10px;
+        }
+        &__header-arrow {
+          display: none;
+        }
+      }
+      &__button {
+        margin: 39px auto 0;
+      }
+    }
+  }
+  .pickfeed__field__pay__header-arrow-green__right {
+    position: absolute;
+    top: 408px;
+    left: 306px;
+    transform: rotate(81deg);
+  }
+  .pickfeed__field__pay__header-arrow-green__left {
+    position: absolute;
+    top: 649px;
+    left: 306px;
+    transform: rotate(81deg);
   }
 }
