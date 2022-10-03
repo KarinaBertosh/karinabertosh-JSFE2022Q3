@@ -75,6 +75,7 @@ a {
       width: 100%;
       & > ul > li:first-child {
         width: 470px;
+        list-style-type: none
       }
       ul {
         display: flex;
