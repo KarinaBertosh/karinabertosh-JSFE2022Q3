@@ -19,7 +19,7 @@
       <div class="wrapper header-container">
         <div class="header__logo">
           <a href="../index.html">
-            <h1>PetStory Online</h1>
+            <h1>PetStory online</h1>
             <img src="../assets/icons/bamboo.svg" alt="bamboo" />
           </a>
         </div>
@@ -31,7 +31,9 @@
                 <li><a href="../index.html">About</a></li>
                 <li><a href="#.html">Map</a></li>
                 <li><a href="#.html">Zoos</a></li>
-                <li><a href="#top" class="active">Donate</a></li>
+                <li>
+                  <a class="active" href="#top">Donate</a>
+                </li>
                 <li><a href="#.html">Contact us</a></li>
               </ul>
             </li>
@@ -44,19 +46,23 @@
             </li>
           </ul>
         </nav>
+        <div class="header-container__burger">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </header>
 
     <main>
-      <section class="favorite-animal">
-      </section>
+      <section class="favorite-animal"></section>
 
-      <section class="pickfeed">
+      <section class="pick-feed">
         <div class="wrapper">
-          <p class="pickfeed__title">
+          <p class="pick-feed__title">
             THE ZOO HAS OFFICIALLY REOPENED BUT WE STILL NEED YOUR HELP!
           </p>
-          <p class="pickfeed__title__text">
+          <p class="pick-feed__title__text">
             Even though the Zoo has been able to reopen, we are at a greatly
             reduced capacity with educational programs and public and private
             events cancelled or postponed for additional months. We need you now
@@ -66,27 +72,75 @@
             and we need your help! Please consider a gift today – no matter what
             size – to help us sustain our mission.
           </p>
-          <p class="pickfeed__title__footer">Donation Information</p>
+          <p class="pick-feed__title__footer">Donation Information</p>
         </div>
-        <div class="pickfeed__field wrapper">
+        <div class="pick-feed__field wrapper">
           <h3>Pick and feed a friend</h3>
-          <p class="pickfeed__field__text1">
+          <p class="pick-feed__field__text1">
             We know the animals bring you joy, and in these extraordinary times,
             we’re glad.
           </p>
 
-          <div class="pickfeed__field__container1">
+          <div class="pick-feed__field__container1">
             <div>
-                <p>4</p>
-                <p>Panda diet for the day.</p>
+              <p>4</p>
+              <p>Panda diet for the day.</p>
             </div>
             <img class="cross-icon" src="../assets/icons/x.svg" alt="x" />
             <img src="../assets/icons/animals-pay.svg" alt="animals" />
           </div>
 
-          <button class="pickfeed__field__button orange-button">
+          <div class="pick-feed__field__amount">
+            <p>Amount</p>
+            <div class="range">
+              <input type="range" step="1" min="1" max="8" value="3"/>
+            </div>
+            <div class="numbers">
+              <span>$5000</span>
+              <span>$2000</span>
+              <span class="active">$1000</span>
+              <span>$500</span>
+              <span>$250</span>
+              <span>$100</span>
+              <span>$50</span>
+              <span>$25</span>
+            </div>
+          </div>
+
+          <div class="pick-feed__field__amount-640">
+            <p>Amount</p>
+            <div class="range-640">
+              <input type="range" step="1" min="1" max="5" value="3"/>
+            </div>
+            <div class="numbers">
+              <span>$500</span>
+              <span>$250</span>
+              <span class="active">$100</span>
+              <span>$50</span>
+              <span>$25</span>
+            </div>
+          </div>
+
+          <div class="pick-feed__field__another-amount">
+            <input type="number" placeholder="Another amount"/>
+          </div>
+
+          <div class="pick-feed__field__frequency">
+            <div>
+              <input type="radio" id="monthly" name="subscribe" value="monthly" />
+              <label for="monthly">Monthly</label>
+            </div>
+
+            <div>
+              <input type="radio" id="once" name="subscribe" value="once" />
+              <label for="once">Once</label>
+            </div>
+          </div>
+
+          <button class="pick-feed__field__button orange-button">
             Feed a friend now
           </button>
+          <p class="pick-feed__field__footer">Share with your friends on social networks</p>
         </div>
       </section>
     </main>
@@ -96,7 +150,7 @@
         <div class="footer__field-1">
           <div class="footer__field-1__logo">
             <a href="../index.html">
-              <h1>PetStory Online</h1>
+              <h1>PetStory online</h1>
               <img src="../assets/icons/bamboo.svg" alt="bamboo" />
             </a>
           </div>
@@ -110,9 +164,11 @@
           </div>
         </div>
 
-        <button class="footer__field-2 orange-button">
-          donate for volunteers
-        </button>
+        <a href="#top">
+          <button class="footer__field-2 orange-button">
+            donate for volunteers
+          </button>
+        </a>
 
         <div class="footer__field-3">
           <ul class="footer__field-3__social">
@@ -155,7 +211,7 @@
             <li><a href="../index.html">About</a></li>
             <li><a href="#.html">Map</a></li>
             <li><a href="#.html">Zoos</a></li>
-            <li><a href="#top" class="active">Donate</a></li>
+            <li><a class="active" href="#top">Donate</a></li>
             <li><a href="#.html">Contact us</a></li>
           </ul>
 
