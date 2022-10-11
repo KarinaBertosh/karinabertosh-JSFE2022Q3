@@ -21,18 +21,6 @@ function closePageMask() {
   burgerIcon.classList.remove('active');
   pageMask.classList.remove("show");
   testimonialPopUp.classList.remove("show");
-
-
-  // console.log(e.target.classList.contains('active'));
-  // burgerIcon.classList.toggle("active");
-  // if (e.target.classList.contains('active')) {
-  //   pageMask.classList.remove("show");
-  //   burgerMenu.classList.remove("show");
-  // }
-  // else {
-  //   pageMask.classList.add("show");
-  //   burgerMenu.classList.add("show");
-  // }
 }
 
 //_________________carousel
@@ -86,8 +74,6 @@ function carousel(arrow) {
   // }
 }
 
-
-
 // Testimonials
 const slider = document.getElementById('slider');
 const testimonials = document.querySelector('.testimonials__field__containers');
@@ -120,28 +106,6 @@ function openTestimonialPopUp(e) {
   testimonialPopUp.classList.add("show");
   pageMask.classList.add("show");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // ABOUT EVENT TARGET
