@@ -20,6 +20,19 @@ function closePageMask() {
   burgerIcon.classList.remove("show");
   burgerIcon.classList.remove('active');
   pageMask.classList.remove("show");
+  testimonialPopUp.classList.remove("show");
+
+
+  // console.log(e.target.classList.contains('active'));
+  // burgerIcon.classList.toggle("active");
+  // if (e.target.classList.contains('active')) {
+  //   pageMask.classList.remove("show");
+  //   burgerMenu.classList.remove("show");
+  // }
+  // else {
+  //   pageMask.classList.add("show");
+  //   burgerMenu.classList.add("show");
+  // }
 }
 
 //_________________carousel
@@ -40,15 +53,15 @@ arrowLeft.addEventListener('click', () => carousel('left'));
 function carousel(arrow) {
   console.log(counter);
   // if (counter >= -1 && counter <= 0) {
-    if (arrow === 'right') {
-      counter--
-    }
-    if (arrow === 'left') {
-      counter++
-    }
-    // const cardsWidth = wrapper.offsetWidth;
-    let value = 386 * counter;
-    cards.style.left = `${value}px`;
+  if (arrow === 'right') {
+    counter--
+  }
+  if (arrow === 'left') {
+    counter++
+  }
+  // const cardsWidth = wrapper.offsetWidth;
+  let value = 386 * counter;
+  cards.style.left = `${value}px`;
 
   // cards.style.width = `${cardsWidth * 2}px`
   // if (arrow === 'right') {
@@ -98,7 +111,6 @@ const popUpClose = document.querySelector('.pop-up__close');
 const popUpContainer = document.querySelector('.pop-up__container');
 
 
-pageMask.addEventListener('click', closePageMask);
 allTestimonial.forEach((item) => { item.addEventListener('click', (event) => openTestimonialPopUp(event)) })
 popUpClose.addEventListener('click', closePageMask)
 
@@ -107,11 +119,6 @@ function openTestimonialPopUp(e) {
   popUpContainer.innerHTML = currentComment.innerHTML;
   testimonialPopUp.classList.add("show");
   pageMask.classList.add("show");
-}
-
-function closePageMask() {
-  testimonialPopUp.classList.remove("show");
-  pageMask.classList.remove("show");
 }
 
 
