@@ -1,0 +1,21 @@
+.button {
+    height: 30px;
+    border: #000 1px solid;
+    background-color: antiquewhite;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(178, 186, 232);
+    }
+    &:active {
+        background-color: rgb(109 126 229);
+    }
+    &.active {
+        background-color: rgb(178, 186, 232);
+    }
+    
+}
