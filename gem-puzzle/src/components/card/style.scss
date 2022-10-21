@@ -1,4 +1,9 @@
 .card {
+    position: relative;
+    transition: all 0.3s ease-out;
+    top: 0;
+    left: 0;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +21,67 @@
         background-color: rgb(88 111 248);
     }
     &.empty-card {
-        background-color: antiquewhite;  
-    } 
+        z-index: -1;
+        background-color: #fff;
+    }
+
+    &__size {
+        &__9 {
+            width: 125px;
+            height: 125px;
+        }
+        &__16 {
+            width: 95px;
+            height: 95px;
+        }
+        &__25 {
+            width: 75px;
+            height: 75px;
+        }
+        &__36 {
+            width: 62px;
+            height: 62px;
+        }
+        &__49 {
+            width: 52px;
+            height: 52px;
+        }
+        &__64 {
+            width: 47px;
+            height: 47px;
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .card {
+        width: 70px;
+        height: 70px;
+        &__size {
+            &__9 {
+                width: 95px;
+                height: 95px;
+            }
+            &__16 {
+                width: 70px;
+                height: 70px;
+            }
+            &__25 {
+                width: 55px;
+                height: 55px;
+            }
+            &__36 {
+                width: 45px;
+                height: 45px;
+            }
+            &__49 {
+                width: 38px;
+                height: 38px;
+            }
+            &__64 {
+                width: 35px;
+                height: 36px;
+            }
+        }
+    }
 }

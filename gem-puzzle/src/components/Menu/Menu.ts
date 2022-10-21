@@ -6,6 +6,7 @@ export class Menu extends BaseComponent {
   constructor() {
     super('div', ['menu']);
     const startGameBtn = new Button('Shuffle and start');
+
     const stopGameBtn = new Button('Stop');
     const saveGameBtn = new Button('Save');
     const resultsGameBtn = new Button('Results');
