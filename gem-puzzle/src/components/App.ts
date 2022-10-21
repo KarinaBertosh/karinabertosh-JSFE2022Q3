@@ -7,26 +7,77 @@ import { Stepper } from './Stepper/Stepper';
 import { Timer } from './Timer/Timer';
 
 export class App extends BaseComponent {
+  private sizeField = 16;
+
+  private cardFieldFrameSize: CardFieldFrameSize = new CardFieldFrameSize(`${Math.sqrt(this.sizeField)} * ${Math.sqrt(this.sizeField)}`);
+
+  private settings: GameSettings = new GameSettings(this.sizeField);
+
+  private stepper: Stepper = new Stepper();
+
+  private cardField: CardField = new CardField(() => this.countStep());
+
   constructor() {
     super('main', ['app']);
 
     const menu = new Menu();
-    const step = new Stepper(1);
     const timer = new Timer();
-    const cardField = new CardField();
+    this.cardField.refreshGameSize(this.sizeField);
+    menu.element.childNodes.forEach((btn) => {
+      btn.addEventListener('click', (e) => this.handlerMenu(e.target));
+    });
 
-    const defaultNums = [1, 2, 3, 4, 5, 6, 0, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-    cardField.add(defaultNums);
+    this.cardField.add(this.shuffle());
 
-    const frameSize = new CardFieldFrameSize('4*4');
-    const settings = new GameSettings();
+    this.settings.element.childNodes.forEach((btn) => {
+      btn.addEventListener('click', (e) => this.handlerSettings(e.target));
+    });
 
-    // timer.startTimer();
     this.element.appendChild(menu.element);
-    this.element.appendChild(step.element);
+    this.element.appendChild(this.stepper.element);
     this.element.appendChild(timer.element);
-    this.element.appendChild(cardField.element);
-    this.element.appendChild(frameSize.element);
-    this.element.appendChild(settings.element);
+    this.element.appendChild(this.cardField.element);
+    this.element.appendChild(this.cardFieldFrameSize.element);
+    this.element.appendChild(this.settings.element);
   }
+
+  handlerSettings(el: any): void {
+    const count = +el.textContent[0];
+    if (typeof count === 'number') {
+      this.sizeField = count ** 2;
+      this.cardFieldFrameSize.changeFrameSizeText(`${Math.sqrt(this.sizeField)} * ${Math.sqrt(this.sizeField)}`);
+    }
+    this.cardField.clear();
+    this.cardField.add(this.shuffle());
+    this.cardField.refreshGameSize(this.sizeField);
+
+    const allSettings: NodeListOf<HTMLButtonElement> = document.querySelectorAll('button');
+
+    allSettings.forEach((btn: HTMLButtonElement) => {
+      btn.classList.remove('active');
+    });
+    el.classList.add('active');
+    this.stepper.clearStep();
+  }
+
+  handlerMenu(el: any): void {
+    if (el.textContent === 'Shuffle and start') {
+      this.cardField.clear();
+      this.cardField.add(this.shuffle());
+      this.stepper.clearStep();
+    }
+  }
+
+  shuffle(): number[] {
+    const newNumbers = Array.from(Array(this.sizeField).keys());
+    return newNumbers.sort(() => Math.random() - 0.5);
+  }
+
+  countStep(): void {
+    this.stepper.plusStep();
+  }
+
+  // stopGame(totalArr: number[]): string {
+
+  // }
 }

@@ -16,6 +16,7 @@
     }
     &.active {
         background-color: rgb(178, 186, 232);
+        pointer-events: none;
     }
-    
 }
+
