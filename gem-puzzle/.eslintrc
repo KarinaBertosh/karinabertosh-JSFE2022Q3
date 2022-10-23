@@ -16,7 +16,7 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "defaultAssignment": 0,
+    "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
     "no-plusplus": "off",
     "no-console": "warn",
     "max-len": ["warn", { "code": 120 }],

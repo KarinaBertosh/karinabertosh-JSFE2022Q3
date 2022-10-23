@@ -76,8 +76,4 @@ export class App extends BaseComponent {
   countStep(): void {
     this.stepper.plusStep();
   }
-
-  // stopGame(totalArr: number[]): string {
-
-  // }
 }

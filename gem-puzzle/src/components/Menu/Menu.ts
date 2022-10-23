@@ -11,9 +11,12 @@ export class Menu extends BaseComponent {
     const saveGameBtn = new Button('Save');
     const resultsGameBtn = new Button('Results');
 
+    const soundBtn = new Button('ON/OFF sound Game');
+
     this.element.appendChild(startGameBtn.element);
     this.element.appendChild(stopGameBtn.element);
     this.element.appendChild(saveGameBtn.element);
     this.element.appendChild(resultsGameBtn.element);
+    this.element.appendChild(soundBtn.element);
   }
 }
