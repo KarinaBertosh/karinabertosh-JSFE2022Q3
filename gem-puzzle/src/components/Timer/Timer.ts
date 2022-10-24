@@ -3,20 +3,41 @@ import { BaseComponent } from '../base-components';
 import './style.scss';
 
 export class Timer extends BaseComponent {
-  sec: number;
+  gameTimer: any;
 
-  timerText: BaseComponent;
+  private sec = 0;
 
-  timeId: number | undefined;
+  private currantTime = '0:00';
 
   constructor() {
     super('div', ['timer']);
+    this.element.innerHTML = `Timer: ${this.currantTime}`;
+  }
 
-    this.timerText = new BaseComponent('div', ['time']);
-    this.element.appendChild(this.timerText.element);
-
+  startTimer(): void {
     this.sec = 0;
+    this.rerender();
+    this.gameTimer = setInterval(() => {
+      this.sec += 1;
+      this.rerender();
+    }, 1000);
+  }
 
-    this.timerText.element.innerHTML = '00:00'; // this.getTime();
+  stopTimer(): void {
+    clearInterval(this.gameTimer);
+    this.rerender();
+  }
+
+  rerender(): void {
+    const min = Math.floor(this.sec / 60);
+    const secNum = Math.floor(this.sec % 60);
+    const sec = secNum < 10 ? `0${secNum}` : secNum;
+    const currantTime = `${min}:${sec}`;
+    this.currantTime = currantTime;
+    this.element.innerHTML = `Timer: ${currantTime}`;
+  }
+
+  getTime(): string {
+    return this.currantTime;
   }
 }

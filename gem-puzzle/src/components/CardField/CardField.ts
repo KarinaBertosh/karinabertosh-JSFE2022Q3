@@ -1,17 +1,23 @@
 import './style.scss';
 import { BaseComponent } from '../base-components';
 import { Card } from '../Card/Card';
+import { Stepper } from '../Stepper/Stepper';
 
 export class CardField extends BaseComponent {
   private cards: number[] = [];
 
   private count: () => void;
 
+  private finishGame: () => void;
+
+  private stepper: Stepper = new Stepper();
+
   private currantGameSize: number | undefined;
 
-  constructor(countStep: () => void) {
+  constructor(countStep: () => void, renderFinishGame: () => void) {
     super('div', ['card-field']);
     this.count = countStep;
+    this.finishGame = renderFinishGame;
   }
 
   clear(): void {
@@ -33,12 +39,6 @@ export class CardField extends BaseComponent {
     });
   }
 
-  renderFinishGame(): void {
-    const steps = 1;
-    const time = '10:10';
-    this.element.innerHTML = `<div class='finish-game'>You are win! Steps: ${steps}, Time: ${time}</div>`;
-  }
-
   handler(element: any): void {
     const num = element.textContent;
     this.renderNumbers(+num, element);
@@ -49,6 +49,24 @@ export class CardField extends BaseComponent {
   }
 
   getCardSize(x: string): string {
+    if (window.innerWidth <= 500) {
+      switch (this.currantGameSize) {
+        case 9:
+          return x === '-' ? '-100px' : '100px';
+        case 16:
+          return x === '-' ? '-75px' : '75px';
+        case 25:
+          return x === '-' ? '-60px' : '60px';
+        case 36:
+          return x === '-' ? '-50px' : '50px';
+        case 49:
+          return x === '-' ? '-42px' : '42px';
+        case 64:
+          return x === '-' ? '-37px' : '37px';
+        default:
+          return '100px';
+      }
+    }
     switch (this.currantGameSize) {
       case 9:
         return x === '-' ? '-133px' : '133px';
@@ -100,7 +118,7 @@ export class CardField extends BaseComponent {
     if (CardField.isFinishGame(result)) {
       setTimeout(() => {
         this.clear();
-        this.renderFinishGame();
+        this.finishGame();
       }, 300);
     } else {
       setTimeout(() => {

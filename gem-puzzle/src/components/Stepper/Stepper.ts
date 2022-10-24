@@ -28,4 +28,8 @@ export class Stepper extends BaseComponent {
     <p>${this.numberStep}</p>
    `;
   }
+
+  getSteps(): number {
+    return this.numberStep;
+  }
 }
