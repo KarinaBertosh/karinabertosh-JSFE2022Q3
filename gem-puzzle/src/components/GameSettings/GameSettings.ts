@@ -8,7 +8,6 @@ export class GameSettings extends BaseComponent {
     this.element.innerHTML = `     
       <p>Other sizes:</p> 
    `;
-    console.log(size);
 
     const field9 = new Button('3*3', size === 9 ? ['active'] : []);
     const field16 = new Button('4*4', size === 16 ? ['active'] : []);

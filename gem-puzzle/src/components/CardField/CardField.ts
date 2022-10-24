@@ -1,17 +1,23 @@
 import './style.scss';
 import { BaseComponent } from '../base-components';
 import { Card } from '../Card/Card';
+import { Stepper } from '../Stepper/Stepper';
 
 export class CardField extends BaseComponent {
   private cards: number[] = [];
 
   private count: () => void;
 
+  private finishGame: () => void;
+
+  private stepper: Stepper = new Stepper();
+
   private currantGameSize: number | undefined;
 
-  constructor(countStep: () => void) {
+  constructor(countStep: () => void, renderFinishGame: () => void) {
     super('div', ['card-field']);
     this.count = countStep;
+    this.finishGame = renderFinishGame;
   }
 
   clear(): void {
@@ -43,19 +49,37 @@ export class CardField extends BaseComponent {
   }
 
   getCardSize(x: string): string {
+    if (window.innerWidth <= 500) {
+      switch (this.currantGameSize) {
+        case 9:
+          return x === '-' ? '-100px' : '100px';
+        case 16:
+          return x === '-' ? '-75px' : '75px';
+        case 25:
+          return x === '-' ? '-60px' : '60px';
+        case 36:
+          return x === '-' ? '-50px' : '50px';
+        case 49:
+          return x === '-' ? '-42px' : '42px';
+        case 64:
+          return x === '-' ? '-37px' : '37px';
+        default:
+          return '100px';
+      }
+    }
     switch (this.currantGameSize) {
       case 9:
         return x === '-' ? '-133px' : '133px';
       case 16:
         return x === '-' ? '-100px' : '100px';
       case 25:
-        return x === '-' ? '-100px' : '100px';
+        return x === '-' ? '-80px' : '80px';
       case 36:
-        return x === '-' ? '-100px' : '100px';
+        return x === '-' ? '-66px' : '66px';
       case 49:
-        return x === '-' ? '-100px' : '100px';
+        return x === '-' ? '-57px' : '57px';
       case 64:
-        return x === '-' ? '-100px' : '100px';
+        return x === '-' ? '-50px' : '50px';
       default:
         return '100px';
     }
@@ -68,6 +92,7 @@ export class CardField extends BaseComponent {
     const lengthRow = Math.sqrt(arr.length);
     const indexEl = arr.indexOf(num);
     const indexElementRow = indexEl % lengthRow;
+
     if (arr[indexEl + 1] === 0 && indexElementRow !== (lengthRow - 1)) {
       result.splice(indexEl + 1, 1, num);
       result.splice(indexEl, 1, 0);
@@ -90,9 +115,28 @@ export class CardField extends BaseComponent {
       this.count();
     }
 
-    setTimeout(() => {
-      this.clear();
-      this.add(result);
-    }, 300);
+    if (CardField.isFinishGame(result)) {
+      setTimeout(() => {
+        this.clear();
+        this.finishGame();
+      }, 300);
+    } else {
+      setTimeout(() => {
+        this.clear();
+        this.add(result);
+      }, 300);
+    }
+  }
+
+  static isFinishGame(cardNumbers: number[]): boolean {
+    let err = '';
+    for (let i = 0; i < cardNumbers.length; i++) {
+      if (cardNumbers[i + 1]) {
+        if (cardNumbers[i] > cardNumbers[i + 1]) {
+          err = 'err';
+        }
+      }
+    }
+    return !err && cardNumbers[cardNumbers.length - 1] === 0;
   }
 }

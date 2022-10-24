@@ -1,14 +1,6 @@
 .menu {
-    width: 400px;
-    height: 30px;
+    width: 300px;
     display: flex;
     flex-wrap: wrap;
-    margin: 30px auto;
-    
-}
-
-@media screen and (min-width: 320px) and (max-width: 500px) {
-    .menu {
-        width: 300px;
-    }
+    margin: 30px auto 10px;  
 }
