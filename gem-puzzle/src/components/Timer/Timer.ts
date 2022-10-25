@@ -23,6 +23,11 @@ export class Timer extends BaseComponent {
     }, 1000);
   }
 
+  timerZero(): void {
+    this.sec = 0;
+    this.rerender();
+  }
+
   stopTimer(): void {
     clearInterval(this.gameTimer);
     this.rerender();

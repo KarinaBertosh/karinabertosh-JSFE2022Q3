@@ -6,6 +6,16 @@ import { GameSettings } from './GameSettings/GameSettings';
 import { Stepper } from './Stepper/Stepper';
 import { Timer } from './Timer/Timer';
 import { SoundBtn } from './SoundBtn/SoundBtn';
+import { TableResults } from './TableResults/TableResults';
+import { Button } from './Button/Button';
+
+const KEY_LS = 'bastResult';
+
+interface IResult {
+  steps: string,
+  time: string,
+  typeGame: string,
+}
 
 export class App extends BaseComponent {
   private sizeField = 16;
@@ -23,6 +33,8 @@ export class App extends BaseComponent {
   private menu = new Menu();
 
   private soundBtn = new SoundBtn();
+
+  private tableResults = new TableResults();
 
   constructor() {
     super('main', ['app']);
@@ -52,7 +64,7 @@ export class App extends BaseComponent {
 
   handlerSettings(el: any): void {
     if (this.checkSoundOn()) {
-      this.playAudio('./step.mp3');
+      App.playAudio('./step.mp3');
     }
     const count = +el.textContent[0];
     if (typeof count === 'number') {
@@ -76,7 +88,7 @@ export class App extends BaseComponent {
 
   handlerMenu(el: any): void {
     if (this.checkSoundOn()) {
-      this.playAudio('./step.mp3');
+      App.playAudio('./step.mp3');
     }
     if (el.textContent === 'Shuffle and start') {
       this.cardField.clear();
@@ -84,6 +96,13 @@ export class App extends BaseComponent {
       this.stepper.clearStep();
       this.timer.stopTimer();
       this.timer.startTimer();
+    }
+    if (el.textContent === 'Results') {
+      console.log(1);
+      this.cardField.clear();
+      this.openTableResult();
+      this.timer.timerZero();
+      this.timer.stopTimer();
     }
   }
 
@@ -94,23 +113,23 @@ export class App extends BaseComponent {
 
   countStep(): void {
     if (this.checkSoundOn()) {
-      this.playAudio('./card.wav');
+      App.playAudio('./card.wav');
     }
     this.stepper.plusStep();
   }
 
   renderFinishGame(): void {
     if (this.checkSoundOn()) {
-      this.playAudio('./win.mp3');
+      App.playAudio('./win.mp3');
     }
     this.cardField.element.innerHTML = `<div class='finish-game'>
     You are win! Steps: <span>${this.stepper.getSteps()} </span>, Time: <span>${this.timer.getTime()}</span>
     </div>`;
     this.timer.stopTimer();
+    this.localStorage();
   }
 
-  playAudio(soundSrc: string): void {
-    console.log(this.sizeField);
+  static playAudio(soundSrc: string): void {
     const audio = new Audio();
     audio.src = soundSrc;
     audio.currentTime = 0;
@@ -123,5 +142,31 @@ export class App extends BaseComponent {
 
   checkSoundOn(): boolean {
     return this.soundBtn.getSoundButtonText() === 'Sound ON';
+  }
+
+  localStorage(): void {
+    const newResult = {
+      steps: this.stepper.getSteps(),
+      time: this.timer.getTime(),
+      typeGame: `${Math.sqrt(this.sizeField)} * ${Math.sqrt(this.sizeField)}`,
+    };
+    const getData = localStorage.getItem(KEY_LS);
+    let sendData = [];
+    if (getData && getData.length) {
+      sendData = [...JSON.parse(getData), newResult];
+    } else {
+      sendData = [newResult];
+    }
+    sendData.sort((a, b) => ((a.steps > b.steps) ? 1 : ((b.steps > a.steps) ? -1 : 0)));
+    localStorage.setItem(KEY_LS, JSON.stringify(sendData.slice(0, 10)));
+  }
+
+  openTableResult(): void {
+    this.cardField.element.innerHTML = '';
+    const getData = localStorage.getItem(KEY_LS);
+    if (getData) {
+      this.tableResults.renderTable(JSON.parse(getData));
+    }
+    this.cardField.element.appendChild(this.tableResults.element);
   }
 }
