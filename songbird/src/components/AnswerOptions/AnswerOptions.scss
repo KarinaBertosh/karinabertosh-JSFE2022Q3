@@ -1,0 +1,33 @@
+.answer-options {
+    background-color: #222;
+    border-radius: 10px;
+    width: 300px;
+
+    :hover {
+        background-color: rgb(75, 73, 73);
+        border-radius: 10px;
+    }
+}
+
+.bird-names {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    border: 1px solid rgb(141, 139, 139);
+    list-style: none;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.dot {
+    margin: 0 10px;
+    width: 7px;
+    height: 7px;
+    background-color: rgb(134, 134, 134);
+    border-radius: 50%;
+    :active {
+        background-color: rgb(57, 207, 23);
+        border-radius: 10px;
+    }
+}

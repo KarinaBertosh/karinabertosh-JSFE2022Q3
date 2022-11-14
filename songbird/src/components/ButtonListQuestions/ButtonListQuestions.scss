@@ -1,0 +1,23 @@
+.button {
+    height: 30px;
+    border: 0px;
+    border-radius: 10px;
+    background-color: #008966;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 21px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        background-color: #aeeddd;
+    }
+    &:active {
+        background-color: #045a44;
+    }
+    &.active {
+        background-color: #13b58d;
+        pointer-events: none;
+    }
+}

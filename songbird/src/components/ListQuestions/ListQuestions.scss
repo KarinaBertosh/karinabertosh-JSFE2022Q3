@@ -1,0 +1,16 @@
+.list-questions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: #008966;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.item-menu {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    border-color: #007c5d;
+}
