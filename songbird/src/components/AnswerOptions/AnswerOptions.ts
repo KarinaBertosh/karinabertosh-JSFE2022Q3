@@ -1,20 +1,13 @@
 import './AnswerOptions.scss';
 import { BaseComponent } from '../base-components';
-
-export interface IBird {
-  id: number,
-  name: string,
-  species: string,
-  description: string,
-  image: string,
-  audio: string,
-}
+import { IBird } from '../../type';
 
 export class AnswerOptions extends BaseComponent {
   constructor(birds: IBird[]) {
     super('ul', ['answer-options']);
     birds.forEach((bird: IBird) => {
       const row = document.createElement('li');
+      row.setAttribute('id', bird.name);
       const dot = document.createElement('div');
       const text = document.createElement('p');
       row.classList.add('bird-names');
@@ -34,5 +27,9 @@ export class AnswerOptions extends BaseComponent {
       row.innerHTML = bird.name;
       this.element.appendChild(row);
     });
+  }
+
+  clear(): void {
+
   }
 }

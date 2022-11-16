@@ -5,17 +5,20 @@ import { СurrentQuestion } from './СurrentQuestion/СurrentQuestion';
 import birdsData from '../constants';
 import { AnswerOptions } from './AnswerOptions/AnswerOptions';
 import { NextLevelBtn } from './NextLevelBtn/NextLevelBtn';
+import { IBird } from '../type';
 
 export class App extends BaseComponent {
   private menu = new Menu();
 
+  private currentList = 0;
+
   private listQuestions = new ListQuestions();
 
-  private nextLevelBtn = new NextLevelBtn();
+  private nextLevelBtn = new NextLevelBtn(true);
 
-  private currentQuestion = new СurrentQuestion(birdsData[0][0]);
+  private currentQuestion = new СurrentQuestion(birdsData[0][0], true);
 
-  private currentAnswer = new СurrentQuestion(birdsData[0][0], true, true);
+  private currentAnswer = new СurrentQuestion(birdsData[0][0], false, true, true, true);
 
   private answerOptions = new AnswerOptions(birdsData[0]);
 
@@ -32,5 +35,12 @@ export class App extends BaseComponent {
     this.element.appendChild(fieldQuiz);
 
     this.element.appendChild(this.nextLevelBtn.element);
+
+    this.answerOptions.element.childNodes.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const target = e.target as HTMLDivElement;
+        this.currentAnswer.drawBird(target.id, this.currentList);
+      });
+    });
   }
 }

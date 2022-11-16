@@ -6,6 +6,7 @@
     background-color: #008966;
     border-radius: 10px;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .item-menu {
@@ -13,4 +14,8 @@
     list-style: none;
     text-align: center;
     border-color: #007c5d;
+}
+
+.active {
+    background-color: #007c5d;
 }

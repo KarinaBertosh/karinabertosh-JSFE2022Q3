@@ -1,4 +1,19 @@
 .next-btn {
     width: 100%;
+    margin-top: 20px;
+}
+
+.deactivated {
+    background-color: #303030;
+    &:hover {
+        background-color: #303030;
+    }
+    &:active {
+        background-color: #303030;
+    }
+    &.active {
+        background-color: #303030;
+        pointer-events: none;
+    }
 }
 

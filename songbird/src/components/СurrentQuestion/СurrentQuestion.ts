@@ -1,47 +1,71 @@
-import './СurrentQuestion.scss';
 import { BaseComponent } from '../base-components';
-
-export interface IBird {
-  id: number,
-  name: string,
-  species: string,
-  description: string,
-  image: string,
-  audio: string,
-}
+import birdsData from '../../constants';
+import { IBird } from '../../type';
+import './СurrentQuestion.scss';
 
 export class СurrentQuestion extends BaseComponent {
-  constructor(bird: IBird, species = false, description = false) {
+  private birdsData = birdsData;
+
+  constructor(bird: IBird, isHiddenBird = false, isSpecies = false, isDescription = false, onlyHelpText = false) {
     super('div', ['current-question']);
-    const field = document.createElement('div');
-    const fieldDescription = document.createElement('div');
-    const image = document.createElement('div');
-    const name = document.createElement('div');
-    const speciesBird = document.createElement('div');
-    const audio = document.createElement('div');
-    const descriptionBird = document.createElement('div');
+    this.renderComponent(bird, isHiddenBird, isSpecies, isDescription, onlyHelpText);
+  }
 
-    field.classList.add('field');
-    fieldDescription.classList.add('field-description');
-    image.classList.add('bird-image');
-    name.classList.add('bird-name');
-    speciesBird.classList.add('bird-species');
-    audio.classList.add('bird-audio');
-    descriptionBird.classList.add('bird-description');
+  clear(): void {
+    this.element.innerHTML = '';
+  }
 
-    image.innerHTML = `<img class="bird-image" src=${bird.image}>`;
-    name.innerHTML = `<div class="bird-name">${bird.name}<div/>`;
-    speciesBird.innerHTML = `${species ? `<div>${bird.species}</div>` : ''}`;
-    audio.innerHTML = `<audio id="audio" src="${bird.audio}" controls ></audio>`;
-    descriptionBird.innerHTML = `${description ? `<div>${bird.description}</div>` : ''}`;
+  renderComponent(
+    bird: IBird,
+    isHiddenBird = false,
+    isSpecies = false,
+    isDescription = false,
+    onlyHelpText = false,
+  ): void {
+    if (onlyHelpText) {
+      this.element.innerHTML = `<p class='deactivate'>
+      Послушайте плеер. Выберите птицу из списка
+      <p/>`;
+    } else {
+      const field = document.createElement('div');
+      const fieldDescription = document.createElement('div');
+      const image = document.createElement('div');
+      const name = document.createElement('div');
+      const speciesBird = document.createElement('div');
+      const audio = document.createElement('div');
+      const descriptionBird = document.createElement('div');
 
-    this.element.appendChild(field);
-    this.element.appendChild(fieldDescription);
-    field.appendChild(image);
-    field.appendChild(fieldDescription);
-    fieldDescription.appendChild(name);
-    fieldDescription.appendChild(speciesBird);
-    fieldDescription.appendChild(audio);
-    this.element.appendChild(descriptionBird);
+      field.classList.add('field');
+      fieldDescription.classList.add('field-description');
+      image.classList.add('bird-image');
+      name.classList.add('bird-name');
+      speciesBird.classList.add('bird-species');
+      audio.classList.add('bird-audio');
+      // descriptionBird.classList.add('bird-description');
+
+      image.innerHTML = `<img class="bird-image" src=${isHiddenBird ?
+        '	https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg'
+        : bird.image}>`;
+      name.innerHTML = `<div class="bird-name">${isHiddenBird ? '******' : bird.name}<div/>`;
+      speciesBird.innerHTML = `${isSpecies ? `<div>${bird.species}</div>` : ''}`;
+      audio.innerHTML = `<audio id="audio" src="${bird.audio}" controls ></audio>`;
+      descriptionBird.innerHTML = `${isDescription ? `<div class='bird-description'>${bird.description}</div>` : ''}`;
+
+      this.element.appendChild(field);
+      this.element.appendChild(fieldDescription);
+      field.appendChild(image);
+      field.appendChild(fieldDescription);
+      fieldDescription.appendChild(name);
+      fieldDescription.appendChild(speciesBird);
+      fieldDescription.appendChild(audio);
+      this.element.appendChild(descriptionBird);
+    }
+  }
+
+  drawBird(nameBird: string, numList = 0): void {
+    this.clear();
+    const indexBird = birdsData[numList].findIndex((el) => el.name === nameBird);
+    const renderBird = birdsData[numList][indexBird];
+    this.renderComponent(renderBird, false, true, true);
   }
 }
