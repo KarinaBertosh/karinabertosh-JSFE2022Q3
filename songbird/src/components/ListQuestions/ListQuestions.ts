@@ -3,21 +3,18 @@ import { BaseComponent } from '../base-components';
 import { ButtonListQuestions } from '../ButtonListQuestions/ButtonListQuestions';
 
 export class ListQuestions extends BaseComponent {
-  // private buttonListQuestions = new ButtonListQuestions();
-  constructor() {
-    super('div', ['list-questions']);
-    const warmUpBtn = new ButtonListQuestions('Разминка', ['active']);
-    const passerinesBtn = new ButtonListQuestions('Воробьиные');
-    const forestBtn = new ButtonListQuestions('Лесные птицы');
-    const choristersBtn = new ButtonListQuestions('Певчие птицы');
-    const predatoryBtn = new ButtonListQuestions('Хищные птицы');
-    const maritimeBtn = new ButtonListQuestions('Морские птицы');
+  private listMenu = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
 
-    this.element.appendChild(warmUpBtn.element);
-    this.element.appendChild(passerinesBtn.element);
-    this.element.appendChild(forestBtn.element);
-    this.element.appendChild(choristersBtn.element);
-    this.element.appendChild(predatoryBtn.element);
-    this.element.appendChild(maritimeBtn.element);
+  constructor(numList: number) {
+    super('div', ['list-questions']);
+    this.render(numList);
+  }
+
+  render(numList: number): void {
+    this.element.innerHTML = '';
+    this.listMenu.forEach((item: string, index) => {
+      const itemMenu = new ButtonListQuestions(item, [index === numList ? 'active' : 'default']);
+      this.element.appendChild(itemMenu.element);
+    });
   }
 }

@@ -9,8 +9,6 @@ export class СurrentQuestion extends BaseComponent {
   constructor(correctBirdIndex: number, bird: IBird, isHiddenBird = false, isSpecies = false, isDescription = false, onlyHelpText = false) {
     super('div', ['current-question']);
     this.renderComponent(bird, isHiddenBird, isSpecies, isDescription, onlyHelpText);
-    console.log(correctBirdIndex);
-    
   }
 
   clear(): void {
@@ -24,6 +22,7 @@ export class СurrentQuestion extends BaseComponent {
     isDescription = false,
     onlyHelpText = false,
   ): void {
+    this.clear();
     if (onlyHelpText) {
       this.element.innerHTML = `<p class='deactivate'>
       Послушайте плеер. Выберите птицу из списка
@@ -43,10 +42,9 @@ export class СurrentQuestion extends BaseComponent {
       name.classList.add('bird-name');
       speciesBird.classList.add('bird-species');
       audio.classList.add('bird-audio');
-      // descriptionBird.classList.add('bird-description');
 
-      image.innerHTML = `<img class="bird-image" src=${isHiddenBird ?
-        '	https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg'
+      image.innerHTML = `<img class="bird-image" src=${isHiddenBird
+        ? 'https://birds-quiz.netlify.app/static/media/bird.06a46938.jpg'
         : bird.image}>`;
       name.innerHTML = `<div class="bird-name">${isHiddenBird ? '******' : bird.name}<div/>`;
       speciesBird.innerHTML = `${isSpecies ? `<div>${bird.species}</div>` : ''}`;
@@ -71,7 +69,7 @@ export class СurrentQuestion extends BaseComponent {
     this.renderComponent(renderBird, false, true, true);
   }
 
-  renderCorrectAnswer(nameBird: string, numList = 0 , correctBirdIndex: number): void {
+  renderCorrectAnswer(nameBird: string, numList = 0, correctBirdIndex: number): void {
     const indexBird = birdsData[numList].findIndex((el) => el.name === nameBird);
     const renderBird = birdsData[numList][indexBird];
     if (birdsData[numList][correctBirdIndex].name === renderBird.name) {

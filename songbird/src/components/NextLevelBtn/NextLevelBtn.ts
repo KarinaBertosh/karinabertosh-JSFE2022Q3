@@ -3,14 +3,20 @@ import { BaseComponent } from '../base-components';
 import { ButtonListQuestions } from '../ButtonListQuestions/ButtonListQuestions';
 
 export class NextLevelBtn extends BaseComponent {
-  constructor(isDeactivated = false) {
+  private startNextStep;
+
+  constructor(isActive = false, nextStep: () => void) {
     super('div', ['next-btn']);
-    const nextBtn = new ButtonListQuestions('Next Level', ['next-btn', isDeactivated ? 'deactivated' : 'activated']);
-    this.element.appendChild(nextBtn.element);
+    this.startNextStep = nextStep;
+    this.render(isActive);
   }
 
-  // activatedBtn() {
-  //   this.element.classList.remove('deactivated');
-  //   this.element.classList.add('activated');
-  // }
+  render(isActive: boolean) {
+    this.element.innerHTML = '';
+    const nextBtn = new ButtonListQuestions('Next Level', ['next-btn', isActive ? 'activated' : 'deactivated']);
+    if (isActive) {
+      nextBtn.element.addEventListener('click', () => this.startNextStep());
+    }
+    this.element.appendChild(nextBtn.element);
+  }
 }

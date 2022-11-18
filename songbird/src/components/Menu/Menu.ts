@@ -13,5 +13,4 @@ export class Menu extends BaseComponent {
     this.element.appendChild(this.logo.element);
     this.element.appendChild(this.score.element);
   }
-
 }
