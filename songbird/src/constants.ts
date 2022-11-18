@@ -47,7 +47,7 @@ const birdsData = [
       description: 'В щебетании синиц различают более 40 различных звуковых сочетаний. Поют они практически круглый год, немного затихая только зимой. Синицы настоящие санитары леса. Одна пара синиц в период гнездования оберегает от вредителей десятки деревьев.',
       image: 'https://live.staticflickr.com//65535//49366042493_c48c81d58d.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/RFGQDPLDEC/XC518417-Kj%C3%B8ttmeis%20XC%20Helg%C3%B8ya%20Elias%20A.%20Ryberg20200108133922_079.mp3'
-    }
+    },
   ],
   [
     {
@@ -97,7 +97,7 @@ const birdsData = [
       description: 'Когда сойка волнуется, хохолок на её голове взъерошивается. Птица старается создать устрашающее зрелище. Сойки умеют имитировать голоса других птиц, животных и звуки, которые создает человек. На зиму они делают большие запасы желудей и орехов.',
       image: 'https://live.staticflickr.com//65535//49369678956_9a7465c7f4.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/TFOGOENSTQ/XC501517-191008_1590%201300.%20Eichelh%C3%A4her%20D%2C%20NW%2C%20LEV.%20Stephan%20Risch.mp3'
-    }
+    },
   ],
   [
     {
@@ -147,7 +147,7 @@ const birdsData = [
       description: 'Стрижа можно увидеть практически в каждом уголке планеты. Они обитают как в лесных зонах, так и на открытых местностях. Живут стрижи крупными стаями. Большие колонии этих птиц можно увидеть в городах или на прибрежных скалах.',
       image: 'https://live.staticflickr.com//65535//48386150031_7b749df74b.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/TMUAWSDHDJ/XC511871-G.mp3'
-    }
+    },
   ],
   [
     {
@@ -197,7 +197,7 @@ const birdsData = [
       description: 'Щеглы поют красиво и мелодично. И в природе, и в неволе они щебечут почти круглый год. В пении щегла различают более 20 переливчатых трелей. Щеглы привыкают к людям, и даже могут возвратиться к хозяину после того, как их выпустили на волю',
       image: 'https://live.staticflickr.com//65535//49366257253_db3ce48b9a.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC489265-190724_07.58h_putter_biesbosch_%20boompjes%20langs%20open%20water_zang_1ex_ad_niet%20gezien_.mp3'
-    }
+    },
   ],
   [
     {
@@ -247,7 +247,7 @@ const birdsData = [
       description: 'Полет филина бесшумный, зрение очень острое. Эти особенности делают птицу непревзойденным ночным охотником. У филина нет естественных врагов, ни один зверь не охотится на взрослых птиц. А вот на птенцов нападают лисы и волки.',
       image: 'https://live.staticflickr.com/65535/48137123012_393653c2e4.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/WNLIDKJKXT/XC518386-sense%20t%C3%ADtol.mp3'
-    }
+    },
   ],
   [
     {
@@ -297,8 +297,8 @@ const birdsData = [
       description: 'Чайки населяют берега морей, озёр, рек, водохранилищ, болот, часто гнездятся на островах. С конца прошлого века чайки стали появляться в крупных городах, где устраивает гнёзда на крышах зданий. Все чайки ведут колониальный образ жизни.',
       image: 'https://live.staticflickr.com/65535/48577115317_7034201dde.jpg',
       audio: 'https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC501190-190801_06.50h_zilvermeeuw_duinen%20van%20goeree_roep_2ex_overvliegend_gezien_.mp3'
-    }
-  ]
+    },
+  ],
 ];
 
 export default birdsData;

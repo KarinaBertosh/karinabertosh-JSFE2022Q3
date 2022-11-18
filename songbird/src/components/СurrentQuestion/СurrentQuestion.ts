@@ -6,9 +6,11 @@ import './СurrentQuestion.scss';
 export class СurrentQuestion extends BaseComponent {
   private birdsData = birdsData;
 
-  constructor(bird: IBird, isHiddenBird = false, isSpecies = false, isDescription = false, onlyHelpText = false) {
+  constructor(correctBirdIndex: number, bird: IBird, isHiddenBird = false, isSpecies = false, isDescription = false, onlyHelpText = false) {
     super('div', ['current-question']);
     this.renderComponent(bird, isHiddenBird, isSpecies, isDescription, onlyHelpText);
+    console.log(correctBirdIndex);
+    
   }
 
   clear(): void {
@@ -67,5 +69,14 @@ export class СurrentQuestion extends BaseComponent {
     const indexBird = birdsData[numList].findIndex((el) => el.name === nameBird);
     const renderBird = birdsData[numList][indexBird];
     this.renderComponent(renderBird, false, true, true);
+  }
+
+  renderCorrectAnswer(nameBird: string, numList = 0 , correctBirdIndex: number): void {
+    const indexBird = birdsData[numList].findIndex((el) => el.name === nameBird);
+    const renderBird = birdsData[numList][indexBird];
+    if (birdsData[numList][correctBirdIndex].name === renderBird.name) {
+      this.clear();
+      this.renderComponent(renderBird, false);
+    }
   }
 }

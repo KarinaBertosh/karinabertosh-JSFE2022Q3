@@ -1,35 +1,14 @@
 import './AnswerOptions.scss';
 import { BaseComponent } from '../base-components';
+import { AnswerOptionOne } from '../AnswerOptionOne/AnswerOptionOne';
 import { IBird } from '../../type';
 
 export class AnswerOptions extends BaseComponent {
-  constructor(birds: IBird[]) {
+  constructor(birds: IBird[], correctBird: string, getClickBird: (nameBird: string) => void) {
     super('ul', ['answer-options']);
     birds.forEach((bird: IBird) => {
-      const row = document.createElement('li');
-      row.setAttribute('id', bird.name);
-      const dot = document.createElement('div');
-      const text = document.createElement('p');
-      row.classList.add('bird-names');
-      dot.classList.add('dot');
-      row.appendChild(dot);
-      row.appendChild(text);
-      text.innerHTML = bird.name;
-      this.element.appendChild(row);
+      const li = new AnswerOptionOne(bird.name, correctBird, getClickBird);
+      this.element.appendChild(li.element);
     });
-  }
-
-  renderNameOptions(newBirds: any) {
-    this.element.innerHTML = '';
-    newBirds.forEach((bird: IBird) => {
-      const row = document.createElement('li');
-      row.classList.add('bird-names');
-      row.innerHTML = bird.name;
-      this.element.appendChild(row);
-    });
-  }
-
-  clear(): void {
-
   }
 }
