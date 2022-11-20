@@ -5,7 +5,8 @@ import { СurrentQuestion } from './СurrentQuestion/СurrentQuestion';
 import birdsData from '../constants';
 import { AnswerOptions } from './AnswerOptions/AnswerOptions';
 import { NextLevelBtn } from './NextLevelBtn/NextLevelBtn';
-import { ButtonListQuestions } from './ButtonListQuestions/ButtonListQuestions';
+import { Final } from './Final/Final';
+import { ButtonRepeatGame } from './ButtonRepeatGame/ButtonRepeatGame';
 
 import { IBird } from '../type';
 
@@ -22,6 +23,8 @@ export class App extends BaseComponent {
 
   private nextLevelBtn = new NextLevelBtn(false, () => this.nextStep());
 
+  private buttonRepeatGame = new ButtonRepeatGame(() => this.restartGame());
+
   private currentQuestion = new СurrentQuestion(this.correctBirdIndex, this.correctBird, true);
 
   private currentAnswer = new СurrentQuestion(this.correctBirdIndex, this.correctBird, false, true, true, true);
@@ -30,10 +33,11 @@ export class App extends BaseComponent {
 
   private birdsData = birdsData[this.currentList];
 
+  private final = new Final();
+
   constructor() {
     super('main', ['app']);
     this.renderGame();
-    console.log(this.currentList);
   }
 
   getClickBird(nameBird: string) {
@@ -54,14 +58,20 @@ export class App extends BaseComponent {
     return item;
   }
 
-  renderCurrentList(): void {
-    this.currentList += 1;
-    this.renderGame();
-    console.log(this.currentList);
-  }
-
   nextStep(): void {
     this.currentList += 1;
+    if (this.currentList === birdsData.length) {
+      this.element.innerHTML = '';
+      this.element.appendChild(this.menu.element);
+      this.element.appendChild(this.listQuestions.element);
+      this.element.appendChild(this.final.element);
+      this.listQuestions.deleteClassActive();
+      this.final.element.appendChild(this.buttonRepeatGame.element);
+    }
+    this.renderStep();
+  }
+
+  renderStep(): void {
     this.correctBird = App.getRandomBird(birdsData[this.currentList]);
     this.correctBirdIndex = birdsData[this.currentList].indexOf(this.correctBird);
     this.currentQuestion.renderComponent(this.correctBird, true);
@@ -73,7 +83,6 @@ export class App extends BaseComponent {
 
   renderGame(): void {
     this.element.innerHTML = '';
-    console.log(this.nextLevelBtn);
     this.element.appendChild(this.menu.element);
     this.element.appendChild(this.listQuestions.element);
     this.element.appendChild(this.currentQuestion.element);
@@ -83,5 +92,11 @@ export class App extends BaseComponent {
     fieldQuiz.appendChild(this.currentAnswer.element);
     this.element.appendChild(fieldQuiz);
     this.element.appendChild(this.nextLevelBtn.element);
+  }
+
+  restartGame(): void {
+    this.currentList = 0;
+    this.renderGame();
+    this.renderStep();
   }
 }

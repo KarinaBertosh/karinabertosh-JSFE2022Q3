@@ -59,6 +59,10 @@
     }
 }
 
+.none {
+    display: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .current-question {
         align-items: center;
@@ -86,3 +90,5 @@
         flex-direction: column;
     }
 }
+
+

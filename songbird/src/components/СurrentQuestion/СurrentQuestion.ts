@@ -15,6 +15,11 @@ export class СurrentQuestion extends BaseComponent {
     this.element.innerHTML = '';
   }
 
+  none() {
+    this.element.innerHTML = '';
+    this.element.classList.add('none');
+  }
+
   renderComponent(
     bird: IBird,
     isHiddenBird = false,

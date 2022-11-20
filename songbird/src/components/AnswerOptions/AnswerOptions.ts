@@ -19,4 +19,9 @@ export class AnswerOptions extends BaseComponent {
       this.element.appendChild(li.element);
     });
   }
+
+  clear(): void {
+    this.element.innerHTML = '';
+    this.element.classList.add('none');
+  }
 }

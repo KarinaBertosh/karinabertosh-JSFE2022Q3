@@ -17,4 +17,8 @@ export class ListQuestions extends BaseComponent {
       this.element.appendChild(itemMenu.element);
     });
   }
+
+  deleteClassActive(): void {
+    this.render(-1);
+  }
 }
