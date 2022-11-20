@@ -89,6 +89,7 @@ export class App extends BaseComponent {
     const fieldQuiz = document.createElement('div');
     fieldQuiz.classList.add('field-quiz');
     fieldQuiz.appendChild(this.answerOptions.element);
+    this.currentAnswer.element.classList.add('current-answer');
     fieldQuiz.appendChild(this.currentAnswer.element);
     this.element.appendChild(fieldQuiz);
     this.element.appendChild(this.nextLevelBtn.element);

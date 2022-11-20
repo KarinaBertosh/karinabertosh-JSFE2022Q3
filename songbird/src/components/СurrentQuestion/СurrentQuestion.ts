@@ -74,7 +74,7 @@ export class СurrentQuestion extends BaseComponent {
     this.renderComponent(renderBird, false, true, true);
   }
 
-  renderCorrectAnswer(nameBird: string, numList = 0, correctBirdIndex: number): void {
+  renderCorrectAnswer(nameBird: string, numList:number, correctBirdIndex: number): void {
     const indexBird = birdsData[numList].findIndex((el) => el.name === nameBird);
     const renderBird = birdsData[numList][indexBird];
     if (birdsData[numList][correctBirdIndex].name === renderBird.name) {
