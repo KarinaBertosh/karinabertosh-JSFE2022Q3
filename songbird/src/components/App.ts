@@ -2,14 +2,15 @@ import { BaseComponent } from './base-components';
 import { ListQuestions } from './ListQuestions/ListQuestions';
 import { СurrentQuestion } from './СurrentQuestion/СurrentQuestion';
 import birdsData from '../constants';
+import { abc } from '../store';
 import { AnswerOptions } from './AnswerOptions/AnswerOptions';
 import { NextLevelBtn } from './NextLevelBtn/NextLevelBtn';
 import { Final } from './Final/Final';
 import { ButtonRepeatGame } from './ButtonRepeatGame/ButtonRepeatGame';
-
 import { IBird } from '../type';
 import { Logo } from './Logo/Logo';
 import { Score } from './Score/Score';
+import { playAudio } from '../helpers';
 
 export class App extends BaseComponent {
   private logo = new Logo();
@@ -30,42 +31,38 @@ export class App extends BaseComponent {
 
   private currentAnswer = new СurrentQuestion(this.correctBirdIndex, this.correctBird, false, true, true, true);
 
-  private answerOptions = new AnswerOptions(birdsData[this.currentList], this.correctBird.name, (clickName: string) => this.getClickBird(clickName), this.plusScore, this.minusScore);
+  private score = new Score();
 
-  private birdsData = birdsData[this.currentList];
+  private answerOptions = new AnswerOptions(
+    birdsData[this.currentList],
+    this.correctBird.name,
+    (clickName: string, isCorrectBird: boolean) => this.getClickBird(clickName, isCorrectBird),
+  );
 
-  private final = new Final();
-
-  private isStopStep = false;
-
-  private defaultScore = 0;
-
-  private currentScore = 0;
-
-  private score = new Score(this.defaultScore);
-
-  private isStodefoultScore = birdsData.length * 5;
+  private final = new Final(this.score.get(), Score.getMax());
 
   constructor() {
     super('main', ['app']);
     this.renderGame();
-    console.log(this.isStodefoultScore);
   }
 
-  getClickBird(nameBird: string) {
+  getClickBird(nameBird: string, isCorrectBird: boolean) {
     this.currentAnswer.drawBird(nameBird, this.currentList);
-    this.finishStep(nameBird);
-  }
-
-  finishStep(nameBird: string) {
-    if (this.correctBird.name === nameBird) {
-      this.currentScore += 1;
-      this.currentQuestion.renderCorrectAnswer(nameBird, this.currentList, this.correctBirdIndex);
-      this.nextLevelBtn.render(true);
-    } else {
-      this.currentScore -= 1;
+    if (!abc.list.includes(nameBird)) {
+      if (isCorrectBird) {
+        this.score.plus(this.currentList);
+        this.score.render();
+        this.currentQuestion.renderCorrectAnswer(nameBird, this.currentList, this.correctBirdIndex);
+        this.nextLevelBtn.render(true);
+        const allCurrentNameBirds = birdsData[this.currentList].map((bird: IBird) => bird.name);
+        abc.list = allCurrentNameBirds;
+        playAudio('./true.mp3');
+      } else {
+        this.score.minus();
+        abc.list.push(nameBird);
+        playAudio('./false.mp3');
+      }
     }
-    console.log(this.currentScore);
   }
 
   static getRandomBird(arr: IBird[]): any {
@@ -75,11 +72,15 @@ export class App extends BaseComponent {
   }
 
   nextStep(): void {
-    this.currentList += 1;
+    abc.list = [];
+    if (this.currentList < birdsData.length) {
+      this.currentList += 1;
+    }
     if (this.currentList === birdsData.length) {
       this.element.innerHTML = '';
       this.renderMenu();
       this.element.appendChild(this.listQuestions.element);
+      this.final.render(this.score.get(), Score.getMax());
       this.element.appendChild(this.final.element);
       this.listQuestions.deleteClassActive();
       this.final.element.appendChild(this.buttonRepeatGame.element);
@@ -88,7 +89,7 @@ export class App extends BaseComponent {
   }
 
   renderStep(): void {
-    this.score.render(this.currentScore);
+    this.score.render();
     this.correctBird = App.getRandomBird(birdsData[this.currentList]);
     this.correctBirdIndex = birdsData[this.currentList].indexOf(this.correctBird);
     this.currentQuestion.renderComponent(this.correctBird, true);
@@ -113,17 +114,11 @@ export class App extends BaseComponent {
   }
 
   restartGame(): void {
+    abc.list = [];
     this.currentList = 0;
+    this.score.set();
     this.renderGame();
     this.renderStep();
-  }
-
-  plusScore() {
-    this.isStodefoultScore = birdsData.length - 1;
-  }
-
-  minusScore() {
-    this.isStodefoultScore = 0;
   }
 
   renderMenu() {
