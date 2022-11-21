@@ -6,7 +6,7 @@ import { IBird } from '../../type';
 export class AnswerOptions extends BaseComponent {
   private getClickBird;
 
-  constructor(birds: IBird[], correctBird: string, getClickBird: (nameBird: string) => void) {
+  constructor(birds: IBird[], correctBird: string, getClickBird: (nameBird: string) => void , plusScore: () => void, minusScore: () => void) {
     super('ul', ['answer-options']);
     this.getClickBird = getClickBird;
     this.render(birds, correctBird);
@@ -24,4 +24,6 @@ export class AnswerOptions extends BaseComponent {
     this.element.innerHTML = '';
     this.element.classList.add('none');
   }
+
+
 }

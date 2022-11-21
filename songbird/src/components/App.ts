@@ -1,5 +1,4 @@
 import { BaseComponent } from './base-components';
-import { Menu } from './Menu/Menu';
 import { ListQuestions } from './ListQuestions/ListQuestions';
 import { СurrentQuestion } from './СurrentQuestion/СurrentQuestion';
 import birdsData from '../constants';
@@ -9,9 +8,11 @@ import { Final } from './Final/Final';
 import { ButtonRepeatGame } from './ButtonRepeatGame/ButtonRepeatGame';
 
 import { IBird } from '../type';
+import { Logo } from './Logo/Logo';
+import { Score } from './Score/Score';
 
 export class App extends BaseComponent {
-  private menu = new Menu();
+  private logo = new Logo();
 
   private currentList = 0;
 
@@ -29,15 +30,26 @@ export class App extends BaseComponent {
 
   private currentAnswer = new СurrentQuestion(this.correctBirdIndex, this.correctBird, false, true, true, true);
 
-  private answerOptions = new AnswerOptions(birdsData[this.currentList], this.correctBird.name, (clickName: string) => this.getClickBird(clickName));
+  private answerOptions = new AnswerOptions(birdsData[this.currentList], this.correctBird.name, (clickName: string) => this.getClickBird(clickName), this.plusScore, this.minusScore);
 
   private birdsData = birdsData[this.currentList];
 
   private final = new Final();
 
+  private isStopStep = false;
+
+  private defaultScore = 0;
+
+  private currentScore = 0;
+
+  private score = new Score(this.defaultScore);
+
+  private isStodefoultScore = birdsData.length * 5;
+
   constructor() {
     super('main', ['app']);
     this.renderGame();
+    console.log(this.isStodefoultScore);
   }
 
   getClickBird(nameBird: string) {
@@ -47,9 +59,13 @@ export class App extends BaseComponent {
 
   finishStep(nameBird: string) {
     if (this.correctBird.name === nameBird) {
+      this.currentScore += 1;
       this.currentQuestion.renderCorrectAnswer(nameBird, this.currentList, this.correctBirdIndex);
       this.nextLevelBtn.render(true);
+    } else {
+      this.currentScore -= 1;
     }
+    console.log(this.currentScore);
   }
 
   static getRandomBird(arr: IBird[]): any {
@@ -62,7 +78,7 @@ export class App extends BaseComponent {
     this.currentList += 1;
     if (this.currentList === birdsData.length) {
       this.element.innerHTML = '';
-      this.element.appendChild(this.menu.element);
+      this.renderMenu();
       this.element.appendChild(this.listQuestions.element);
       this.element.appendChild(this.final.element);
       this.listQuestions.deleteClassActive();
@@ -72,6 +88,7 @@ export class App extends BaseComponent {
   }
 
   renderStep(): void {
+    this.score.render(this.currentScore);
     this.correctBird = App.getRandomBird(birdsData[this.currentList]);
     this.correctBirdIndex = birdsData[this.currentList].indexOf(this.correctBird);
     this.currentQuestion.renderComponent(this.correctBird, true);
@@ -83,7 +100,7 @@ export class App extends BaseComponent {
 
   renderGame(): void {
     this.element.innerHTML = '';
-    this.element.appendChild(this.menu.element);
+    this.renderMenu();
     this.element.appendChild(this.listQuestions.element);
     this.element.appendChild(this.currentQuestion.element);
     const fieldQuiz = document.createElement('div');
@@ -99,5 +116,21 @@ export class App extends BaseComponent {
     this.currentList = 0;
     this.renderGame();
     this.renderStep();
+  }
+
+  plusScore() {
+    this.isStodefoultScore = birdsData.length - 1;
+  }
+
+  minusScore() {
+    this.isStodefoultScore = 0;
+  }
+
+  renderMenu() {
+    const menu = document.createElement('div');
+    menu.classList.add('menu');
+    menu.appendChild(this.logo.element);
+    menu.appendChild(this.score.element);
+    this.element.appendChild(menu);
   }
 }
