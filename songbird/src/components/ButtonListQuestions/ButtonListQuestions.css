@@ -1,0 +1,20 @@
+.button {
+  height: 30px;
+  border: 0px;
+  border-radius: 10px;
+  background-color: #008966;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  color: white;
+  cursor: pointer;
+}
+.button:active {
+  background-color: #045a44;
+}
+.button.active {
+  background-color: #13b58d;
+  pointer-events: none;
+}/*# sourceMappingURL=ButtonListQuestions.css.map */
