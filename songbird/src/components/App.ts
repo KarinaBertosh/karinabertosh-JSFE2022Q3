@@ -4,15 +4,19 @@ import { СurrentQuestion } from './СurrentQuestion/СurrentQuestion';
 import birdsData from '../constants';
 import { abc } from '../store';
 import { AnswerOptions } from './AnswerOptions/AnswerOptions';
-import { NextLevelBtn } from './NextLevelBtn/NextLevelBtn';
+import { StartBtn } from './NextLevelBtn/StartBtn';
 import { Final } from './Final/Final';
 import { ButtonRepeatGame } from './ButtonRepeatGame/ButtonRepeatGame';
 import { IBird } from '../type';
 import { Logo } from './Logo/Logo';
 import { Score } from './Score/Score';
 import { playAudio } from '../helpers';
+import { StartPage } from './StartPage/StartPage';
+import { NextLevelBtn } from './StartBtn/NextLevelBtn';
 
 export class App extends BaseComponent {
+  private startPage = new StartPage();
+
   private logo = new Logo();
 
   private currentList = 0;
@@ -24,6 +28,8 @@ export class App extends BaseComponent {
   private listQuestions = new ListQuestions(this.currentList);
 
   private nextLevelBtn = new NextLevelBtn(false, () => this.nextStep());
+
+  private startPageBtn = new StartBtn(true, () => this.renderGame());
 
   private buttonRepeatGame = new ButtonRepeatGame(() => this.restartGame());
 
@@ -43,7 +49,7 @@ export class App extends BaseComponent {
 
   constructor() {
     super('main', ['app']);
-    this.renderGame();
+    this.renderStartPage();
   }
 
   getClickBird(nameBird: string, isCorrectBird: boolean) {
@@ -97,6 +103,11 @@ export class App extends BaseComponent {
     this.answerOptions.render(birdsData[this.currentList], this.correctBird.name);
     this.listQuestions.render(this.currentList);
     this.nextLevelBtn.render(false);
+  }
+
+  renderStartPage() {
+    this.element.appendChild(this.startPage.element);
+    this.startPage.element.appendChild(this.startPageBtn.element);
   }
 
   renderGame(): void {
