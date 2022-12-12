@@ -1,20 +1,19 @@
 import './news.css';
 
 class News {
-    draw(data) {
-        const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    draw(data: any) {
+        const news = data.length >= 10 ? data.filter((_item: any, idx: any) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp');
 
-        news.forEach((item, idx) => {
+        news.forEach((item: any, idx: any) => {
             const newsClone = newsItemTemp.content.cloneNode(true);
 
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
-            newsClone.querySelector('.news__meta-photo').style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
-            })`;
+            newsClone.querySelector('.news__meta-photo').style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'
+                })`;
             newsClone.querySelector('.news__meta-author').textContent = item.author || item.source.name;
             newsClone.querySelector('.news__meta-date').textContent = item.publishedAt
                 .slice(0, 10)
