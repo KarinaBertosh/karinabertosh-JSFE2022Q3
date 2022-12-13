@@ -33,3 +33,15 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
+
+
+@media (min-width: 320px) and (max-width: 640px) {
+    header {
+        padding: 5px 15px;
+    }
+    
+    header h1 {
+        font-size: 35px;
+        font-weight: 800;
+    }
+}
