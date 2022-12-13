@@ -1,8 +1,9 @@
 class Loader {
     baseLink: any;
     options: any;
+    endpoint: any;
 
-    constructor(baseLink, options) {
+    constructor(baseLink: any, options: any) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -26,7 +27,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options, endpoint) {
+    makeUrl(options: any, endpoint: any) {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -37,12 +38,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load(method: any, endpoint: any, callback: any, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res) => res.json())
-            .then((data) => callback(data))
-            .catch((err) => console.error(err));
+            .then((res: any) => res.json())
+            .then((data: any) => callback(data))
+            .catch((err: any) => console.error(err));
     }
 }
 
