@@ -1,4 +1,7 @@
 class Loader {
+    baseLink: any;
+    options: any;
+
     constructor(baseLink, options) {
         this.baseLink = baseLink;
         this.options = options;
@@ -13,7 +16,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res) {
+    errorHandler(res: any) {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
