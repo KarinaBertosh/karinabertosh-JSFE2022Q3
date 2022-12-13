@@ -13,7 +13,7 @@ class Loader {
         callback = () => {
             console.error('No callback for GET response');
         }
-    ) {
+    ):void {
         this.load('GET', endpoint, callback, options);
     }
 
@@ -38,7 +38,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: any, endpoint: any, callback: any, options = {}) {
+    load(method: any, endpoint: any, callback: any, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: any) => res.json())

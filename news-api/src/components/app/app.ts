@@ -1,4 +1,6 @@
 import AppController from '../controller/controller';
+export interface Controller {}
+export interface View {}
 import { AppView } from '../view/appView';
 
 class App {
@@ -8,9 +10,11 @@ class App {
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
+        console.log(this.controller);        
+        console.log(this.view);        
     }
 
-    start() {
+    start(): void {
         document
             .querySelector('.sources')
             .addEventListener('click', (e: any) => this.controller.getNews(e, (data: any) => this.view.drawNews(data)));
