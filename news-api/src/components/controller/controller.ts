@@ -1,7 +1,7 @@
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: any) :void {
+    getSources(callback: any): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -13,6 +13,8 @@ class AppController extends AppLoader {
     getNews(e: any, callback: any) {
         let target = e.target;
         const newsContainer = e.currentTarget;
+        console.log();
+        
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {

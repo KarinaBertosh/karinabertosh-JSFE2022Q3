@@ -1,11 +1,10 @@
 import AppController from '../controller/controller';
-export interface Controller {}
-export interface View {}
+import { Controller} from '../../../src/interface'
 import { AppView } from '../view/appView';
 
 class App {
-    controller: any;
-    view: any;
+    public controller: Controller;
+    public view: any;
 
     constructor() {
         this.controller = new AppController();

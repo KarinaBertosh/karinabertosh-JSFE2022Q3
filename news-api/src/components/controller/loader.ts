@@ -1,7 +1,7 @@
 class Loader {
-    baseLink: any;
-    options: any;
-    endpoint: any;
+    public baseLink: any;
+    public options: any;
+    readonly endpoint: any;
 
     constructor(baseLink: any, options: any) {
         this.baseLink = baseLink;
@@ -9,7 +9,7 @@ class Loader {
     }
 
     getResp(
-        { endpoint, options = {} },
+        { endpoint, options = {} }: any,
         callback = () => {
             console.error('No callback for GET response');
         }
