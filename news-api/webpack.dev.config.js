@@ -5,6 +5,6 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, '../dist'),
-        // port: 3000,
+        port: 3000,
     },
 };

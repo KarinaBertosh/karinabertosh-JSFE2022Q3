@@ -8,5 +8,3 @@ function start () {
 }
 
 start();
-
-// app.start();
