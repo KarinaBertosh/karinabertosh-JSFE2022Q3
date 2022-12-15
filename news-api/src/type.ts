@@ -15,21 +15,7 @@ export interface IView {
 }
 
 export interface IOptions {
-  apiKey: string;
-}
-
-
-export interface IResponse {
-  type: string;
-  url: string;
-  redirected: boolean;
-  status: number;
-  ok: boolean;
-  body: ReadableStream;
-  bodyUsed: boolean;
-  headers: object;
-  statusText: string;
-
+  apiKey?: string;
 }
 
 export interface IDataAppView {
@@ -52,6 +38,11 @@ export interface IItemData {
   country: string;
 }
 
+export interface IResponse {
+  endpoint: string,
+  options?: IOptions,
+}
+
 // export interface INews {
 //   draw: () => void;
 // }
@@ -59,3 +50,17 @@ export interface IItemData {
 // export interface ISources {
 //   draw: () => void;
 // }
+export interface ISource {
+  status: string,
+  sources: INewsSource[]
+}
+
+export interface INewsSource {
+  category: string,
+  country: string,
+  description: string,
+  id: string,
+  language: string,
+  name: string,
+  url: string,
+}

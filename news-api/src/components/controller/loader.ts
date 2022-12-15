@@ -1,43 +1,37 @@
-import { IOptions, IResponse} from '../../type'
+import { IOptions, IResponse, ISource } from '../../type'
 
 
 class Loader {
     public baseLink: string;
     public options: IOptions;
-    readonly endpoint: any;
-
-
 
     constructor(baseLink: string, options: IOptions) {
         this.baseLink = baseLink;
         this.options = options;
-        
     }
-    // sources || everything
+
     getResp(
-        { endpoint, options = {} },
+        { endpoint, options = {} }: IResponse,
         callback = () => {
             console.error('No callback for GET response');
         }
     ): void {
         this.load('GET', endpoint, callback, options);
         console.log(endpoint);
-        
     }
 
-    errorHandler(res: IResponse) {
-        
+    errorHandler(res: Response | never) {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
-
         return res;
     }
 
-    makeUrl(options: IOptions, endpoint: any) {
-        const urlOptions = { ...this.options, ...options };
+    makeUrl(options: IOptions, endpoint: string): string {
+        const urlOptions: { [key: string]: string } = { ...this.options, ...options };
+
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
@@ -47,15 +41,12 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method = GET, endpoint: any, callback: (data: object) => void, options : IOptions): void {
-
-        
+    load(method: string, endpoint: string, callback: (data: ISource) => void, options: IOptions): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
-            .then((res: any) => res.json())
-            .then((data: any) => callback(data))
-            .catch((err: any) => console.error(err));
-
+            .then((res) => res.json())
+            .then((data) => callback(data))
+            .catch((err) => console.error(err));
     }
 }
 
