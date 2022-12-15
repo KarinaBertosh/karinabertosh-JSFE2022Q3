@@ -10,10 +10,9 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: any, callback: any) {
+    getNews(e, callback: any) {
         let target = e.target;
         const newsContainer = e.currentTarget;
-        console.log();
         
 
         while (target !== newsContainer) {

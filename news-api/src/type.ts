@@ -1,16 +1,18 @@
-export interface Controller {
+
+export interface IController {
   baseLink: string,
-  options: Options[];
+  options: {apiKey: string};
+  getNews: (e: MouseEvent, callback: any) => void;
+  getSources: (data: any) => void; 
 }
 
-export interface Options {
-  apiKey: string
-}
 
-// export interface View {
-//   news: object;
-//   sources: object;
-// }
+export interface IView {
+  news: object;
+  sources: object;
+  drawSources: (data: any) => void;
+  drawNews: (data: any) => void;
+}
 
 
 // export interface PointerEvent {
