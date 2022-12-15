@@ -32,7 +32,7 @@ class News {
         });
 
         document.querySelector('.news').innerHTML = '';
-        document.querySelector('.news').appendChild(fragment);
+        document.querySelector('.news')?.appendChild(fragment);
     }
 }
 

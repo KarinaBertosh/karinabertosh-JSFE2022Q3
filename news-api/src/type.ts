@@ -42,3 +42,20 @@ export interface IDataAppViewInDrawSources {
   status: string;
   sources: object[];
 }
+
+export interface IItemData {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  country: string;
+}
+
+// export interface INews {
+//   draw: () => void;
+// }
+
+// export interface ISources {
+//   draw: () => void;
+// }
