@@ -3,12 +3,14 @@ import Sources from './sources/sources';
 import { IDataAppView , IDataAppViewInDrawSources} from '../../type'
 
 export class AppView {
-    public news: object;
-    public sources: object;
+    public news: any;
+    public sources: any;
 
     constructor() {
         this.news = new News();
         this.sources = new Sources();
+        console.log(this.news);
+        
 
     }
 

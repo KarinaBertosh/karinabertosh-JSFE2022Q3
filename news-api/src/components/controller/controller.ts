@@ -12,7 +12,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e, callback: () => void) {
+    getNews(e:any, callback: () => void) {
         let target = e.target;
         const newsContainer = e.currentTarget;
         

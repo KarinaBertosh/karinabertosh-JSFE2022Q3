@@ -64,3 +64,14 @@ export interface INewsSource {
   name: string,
   url: string,
 }
+
+export interface INewsData {
+  author:  string;
+  content :  string;
+  description  :  string;
+  publishedAt  :  string;
+  source  :  { id: string, name: string }
+  title  :  string;
+  url  :  string;
+  urlToImage  :  string;
+}
