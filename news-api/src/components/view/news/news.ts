@@ -14,21 +14,37 @@ class News {
         news.forEach((item: INewsData, idx: number) => {
             const newsClone: DocumentFragment = <DocumentFragment>newsItemTemp?.content.cloneNode(true);
             if (newsClone) {
-
                 if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
-
-                newsClone.querySelector('.news__meta-photo').style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'
-                    })`;
-                newsClone.querySelector('.news__meta-author').textContent = item.author || item.source.name;
-                newsClone.querySelector('.news__meta-date').textContent = item.publishedAt
+                const image: HTMLImageElement | null = newsClone.querySelector('.news__meta-photo');
+                if (image) {
+                    image.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+                }
+                const author: HTMLLIElement | null = newsClone.querySelector('.news__meta-author')
+                if (author) {
+                    author.textContent = item.author || item.source.name;
+                }
+                const date: HTMLLIElement | null = newsClone.querySelector('.news__meta-date')
+                if (date) {
+                    date.textContent = item.publishedAt
                     .slice(0, 10)
                     .split('-')
                     .reverse()
                     .join('-');
+                }
+                const title: HTMLLIElement | null = newsClone.querySelector('.news__description-title')
+                if (title) {
+                    title.textContent = item.title;
+                }
+                const source: HTMLLIElement | null = newsClone.querySelector('.news__description-source')
+                if (source) {
+                    source.textContent = item.source.name;
+                }
+                const content: HTMLLIElement | null = newsClone.querySelector('.news__description-content')
+                if (content) {
+                    content.textContent = item.description;
+                }
 
-                newsClone.querySelector('.news__description-title').textContent = item.title;
-                newsClone.querySelector('.news__description-source').textContent = item.source.name;
-                newsClone.querySelector('.news__description-content').textContent = item.description;
+
                 newsClone.querySelector('.news__read-more a')?.setAttribute('href', item.url);
 
                 fragment.append(newsClone);

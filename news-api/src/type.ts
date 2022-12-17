@@ -2,7 +2,7 @@
 export interface IController {
   baseLink: string,
   options: IOptions;
-  getNews: (e: MouseEvent, callback: any) => void;
+  getNews: (e: Event, callback: any) => void;
   getSources: (data: any) => void;
 }
 
@@ -16,6 +16,7 @@ export interface IView {
 
 export interface IOptions {
   apiKey?: string;
+  sources?: string;
 }
 
 export interface IDataAppView {
@@ -66,12 +67,12 @@ export interface INewsSource {
 }
 
 export interface INewsData {
-  author:  string;
-  content :  string;
-  description  :  string;
-  publishedAt  :  string;
-  source  :  { id: string, name: string }
-  title  :  string;
-  url  :  string;
-  urlToImage  :  string;
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  source: { id: string, name: string }
+  title: string;
+  url: string;
+  urlToImage: string;
 }
