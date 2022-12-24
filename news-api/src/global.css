@@ -45,3 +45,17 @@ footer .copyright:before {
         font-weight: 800;
     }
 }
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer__rs a {
+    color: #fff;
+}
+
+.footer__karina a {
+    color: #fff;
+}
