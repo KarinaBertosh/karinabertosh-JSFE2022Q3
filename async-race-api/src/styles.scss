@@ -5,19 +5,33 @@
 }
 body{
     margin: 0 auto;
-    width: 400px;
+    width: 900px;
 }
 .active {
     background-color: rgb(178, 186, 232);
 }
 
 .app{
-    background-color: red;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 
 @media screen and (min-width: 320px) and (max-width: 500px) {
     body {
         width: 300px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    body {
+        width: 450px;
     }
 }

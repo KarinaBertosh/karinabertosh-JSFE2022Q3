@@ -24,12 +24,18 @@
     "indent": ["warn", 2, {
       "SwitchCase": 1
     }],
-    "@typescript-eslint/indent": ["warn", 2, {
-      "SwitchCase": 1
-    }],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
     "import/prefer-default-export": "off",
     "no-param-reassign": ["error", {
       "props": false
-    }]
+    }],
+    "array-callback-return":"off"
   }
 }

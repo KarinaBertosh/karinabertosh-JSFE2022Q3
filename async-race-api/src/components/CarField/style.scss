@@ -1,0 +1,15 @@
+.car__field {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    border-bottom-style: dashed;
+    padding: 10px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    margin-left: -10px;
+}

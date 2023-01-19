@@ -1,0 +1,29 @@
+.button {
+    border: #000 1px solid;
+    border-radius: 5px;
+    background-color: rgb(109, 198, 235);
+    align-items: center;
+    padding: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgb(178, 186, 232);
+    }
+    &:active {
+        background-color: rgb(109 126 229);
+    }
+    &.active {
+        background-color: rgb(178, 186, 232);
+        pointer-events: none;
+    }
+}
+
+.white {
+    background-color: rgb(200, 213, 218);
+}
+
+.btn-pagination{
+    margin-right: 5px;
+    padding: 5px;
+    font-size: 20px;
+}
