@@ -1,5 +1,4 @@
 import { App } from './components/App';
-
 import './styles.scss';
 
 window.onload = () => {

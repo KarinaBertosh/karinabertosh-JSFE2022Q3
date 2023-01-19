@@ -1,8 +1,7 @@
-import { BaseComponent } from '../base-components';
-import './style.css';
+import { BaseComponent } from './base-components';
 
 export class App extends BaseComponent {
   constructor() {
-    super('main', ['apppp']);
+    super('main', ['app']);
   }
 }
