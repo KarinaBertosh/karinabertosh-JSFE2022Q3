@@ -13,20 +13,24 @@ export class CarField extends BaseComponent {
 
   private bBtn = new Button('B');
 
-  // private carImage = new CarImage(color);
-
   constructor(nameCar: string, color: string) {
     super('div', ['car__field']);
     const btn = document.createElement('div');
+    const carField = document.createElement('div');
     const titleCar = new Title(nameCar, ['small', 'margin-left']);
     const carImage = new CarImage(color);
+    const flag = new Image();
+    flag.src = './flag.png';
     btn.className = 'btn';
+    carField.className = 'car-field__image-flag';
     this.element.appendChild(btn);
     btn.appendChild(this.selectBtn.element);
     btn.appendChild(this.removeBtn.element);
     btn.appendChild(this.aBtn.element);
     btn.appendChild(this.bBtn.element);
     btn.appendChild(titleCar.element);
-    this.element.appendChild(carImage.element);
+    this.element.appendChild(carField);
+    carField.appendChild(carImage.element);
+    carField.appendChild(flag);
   }
 }

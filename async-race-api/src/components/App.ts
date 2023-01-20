@@ -1,7 +1,7 @@
 import { BaseComponent } from './base-components';
 import { Button } from './Button/Button';
 import { GaragePage } from './pages/GaragePage/GaragePage';
-import { WinnersPage } from './pages/WinnersPage/GaragePage';
+import { WinnersPage } from './pages/WinnersPage/WinnersPage';
 
 export class App extends BaseComponent {
   private openGaragePageBtn = new Button('TO GARAGE');

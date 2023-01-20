@@ -12,17 +12,23 @@ export class Tooltip extends BaseComponent {
 
   private inputUpDate = new Input();
 
+  // private inputColor = new Input();
+
   private raceBtn = new Button('RACE');
 
   private resetBtn = new Button('RESET');
 
-  private generateCorsBtn = new Button('GENERATE CORS');
+  private generateCorsBtn = new Button('GENERATE CARS');
 
   constructor() {
     super('div', ['tooltip']);
     const createCarField = document.createElement('div');
     const upDateCarField = document.createElement('div');
     const btnInFooter = document.createElement('div');
+    const colorInCreate = document.createElement('input');
+    const colorInUpDate = document.createElement('input');
+    colorInCreate.setAttribute('type', 'color');
+    colorInUpDate.setAttribute('type', 'color');
     createCarField.className = 'create-car-field';
     upDateCarField.className = 'update-car-field';
     btnInFooter.className = 'btn-footer';
@@ -30,8 +36,10 @@ export class Tooltip extends BaseComponent {
     this.element.appendChild(upDateCarField);
     this.element.appendChild(btnInFooter);
     createCarField.appendChild(this.inputCreate.element);
+    createCarField.appendChild(colorInCreate);
     createCarField.appendChild(this.createBtn.element);
     upDateCarField.appendChild(this.inputUpDate.element);
+    upDateCarField.appendChild(colorInUpDate);
     upDateCarField.appendChild(this.updateBtn.element);
     btnInFooter.appendChild(this.raceBtn.element);
     btnInFooter.appendChild(this.resetBtn.element);

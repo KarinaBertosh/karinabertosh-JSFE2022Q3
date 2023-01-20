@@ -4,6 +4,7 @@ import { CarField } from '../CarField/CarField';
 import { Pagination } from '../Pagination/Pagination';
 import { db } from '../data';
 import './style.scss';
+import { IOneCarInGarage } from '../type';
 
 export class GarageField extends BaseComponent {
   private titleField = new Title('Garage');
@@ -20,8 +21,8 @@ export class GarageField extends BaseComponent {
     this.element.appendChild(this.pagination.element);
   }
 
-  renderCars(arr: any): void {
-    arr.map((el: any) => {
+  renderCars(arr: IOneCarInGarage[]): void {
+    arr.map((el: IOneCarInGarage) => {
       const carField = new CarField(`${el.name}`, `${el.color}`);
       this.element.appendChild(carField.element);
     });

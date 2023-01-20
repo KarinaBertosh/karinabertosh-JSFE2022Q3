@@ -1,5 +1,9 @@
-.tooltip {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.input-tooltip {
+    width: 200px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .input-tooltip {
+        width: 150px;
+    }
 }

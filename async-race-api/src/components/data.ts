@@ -26,6 +26,16 @@ export const db = {
       id: 1,
       wins: 1,
       time: 10,
+    },
+    {
+      id: 2,
+      wins: 2,
+      time: 14,
+    },
+    {
+      id: 3,
+      wins: 3,
+      time: 16,
     }
   ]
 };
