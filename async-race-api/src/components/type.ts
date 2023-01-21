@@ -1,10 +1,10 @@
-export interface IOneCarInGarage {
+export interface ICar {
   name: string,
   color: string,
   id: number,
 }
 
-export interface IOneCarInWinners {
+export interface IWinCar {
   id: number,
   wins: number,
   time: number,

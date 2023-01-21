@@ -1,3 +1,5 @@
+import { ICar } from "./type";
+
 const url = 'http://127.0.0.1:3000';
 
 export const getCarsWinners = async (): Promise<any> => {
@@ -7,12 +9,6 @@ export const getCarsWinners = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
-  // if (response.ok) {
-  //   const data = await response.json();
-
-  //   // this.renderTitle(data);
-  //   // this.renderTable(data);
-  // }
 };
 
 export const getCarsGarage = async (): Promise<any> => {
@@ -22,4 +18,28 @@ export const getCarsGarage = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
+};
+
+export const getCarGarage = async (id: number): Promise<any> => {
+  try {
+    const carGarage = await fetch(`${url}/garage/${id}`).then((data) => data.json());
+    return carGarage;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const createCar = async (carName: string, carColor: string): Promise<ICar[]> => {
+  const newCar = JSON.stringify({
+    name: carName,
+    color: carColor,
+  });
+  const response = await fetch(`${url}/garage/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: (newCar),
+  }).then((data) => data.json());
+  return response;
 };

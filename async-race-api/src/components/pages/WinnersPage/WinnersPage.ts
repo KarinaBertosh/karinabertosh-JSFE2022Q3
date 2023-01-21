@@ -1,9 +1,9 @@
 import { BaseComponent } from '../../base-components';
 import { Title } from '../../Title/Title';
 import { Button } from '../../Button/Button';
-import { IOneCarInGarage, IOneCarInWinners } from '../../type';
+import { ICar, IWinCar } from '../../type';
 import { Pagination } from '../../Pagination/Pagination';
-import { getCarsGarage, getCarsWinners } from '../../api';
+import { getCarsGarage, getCarsWinners} from '../../api';
 import './style.scss';
 import { CarImage } from '../../CarImage/CarImage';
 
@@ -25,16 +25,20 @@ export class WinnersPage extends BaseComponent {
         return el.id === carsWinners[i].id;
       }
     });
+    // for (let i = 0; i < carsWinners.length; i++) {
+    //   const id = carsWinners[i].id;
+    //   const carGarage = await getCarGarage(id);
+    // }
     this.renderTitle(carsWinners);
     this.renderTable(carsWinners, carsWinnersFromGarage);
   }
 
-  renderTitle(arr: IOneCarInWinners[]): void {
+  renderTitle(arr: IWinCar[]): void {
     const winnersTitle = new Title(`WINNERS (${arr.length})`);
     this.element.appendChild(winnersTitle.element);
   }
 
-  renderTable(arr: IOneCarInWinners[], newCar: IOneCarInGarage[]): void {
+  renderTable(arr: IWinCar[], newCar: ICar[]): void {
     const tableWinners = document.createElement('div');
 
     const tableTitleWinners = document.createElement('div');
@@ -59,7 +63,7 @@ export class WinnersPage extends BaseComponent {
     nameWinners.textContent = 'Name';
     bestTimeWinners.textContent = 'Best time';
 
-    arr.map((el: IOneCarInWinners) => {
+    arr.map((el: IWinCar) => {
       const currentNumberWinners = document.createElement('div');
       const currentTimeWinners = document.createElement('div');
 
@@ -73,7 +77,7 @@ export class WinnersPage extends BaseComponent {
       bestTimeWinners.appendChild(currentTimeWinners);
     });
 
-    newCar.map((el: IOneCarInGarage) => {
+    newCar.map((el: ICar) => {
       const color = `${el.name}`;
       const currentCarImageWinners = new CarImage(color);
       const currentNameCarWinners = document.createElement('div');
