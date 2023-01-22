@@ -3,7 +3,7 @@ import { Title } from '../Title/Title';
 import { CarField } from '../CarField/CarField';
 import { Pagination } from '../Pagination/Pagination';
 import { ICar } from '../type';
-import { deleteCar, getCarsGarage } from '../api';
+import { deleteCar, getCarsGarage, getCarsWinners } from '../api';
 import './style.scss';
 
 export class GarageField extends BaseComponent {
@@ -15,6 +15,8 @@ export class GarageField extends BaseComponent {
 
   private cars = [];
 
+  private carsWin = [];
+
   constructor(selectCar: (id: number, carName: string, carColor: string) => void) {
     super('div', ['garage__field']);
     this.getCars();
@@ -23,7 +25,7 @@ export class GarageField extends BaseComponent {
 
   async getCars(): Promise<any> {
     this.cars = await getCarsGarage();
-    this.renderTitle(this.cars);
+    this.carsWin = await getCarsWinners();
     this.renderCars(this.cars);
   }
 
@@ -40,17 +42,18 @@ export class GarageField extends BaseComponent {
   }
 
   upDateCar(id: number, carName: string, carColor: string): void {
-    this.element.innerHTML = '';
-    const newPosts = this.cars.map((car: ICar) => (
+    // this.element.innerHTML = '';
+    const newCars = this.cars.map((car: ICar) => (
       car.id === id
         ? { ...car, name: carName, color: carColor }
         : car
     ));
-    this.renderCars(newPosts);
+    this.renderCars(newCars);
   }
 
   renderCars(cars: ICar[]): void {
     this.element.innerHTML = '';
+    this.renderTitle(this.cars);
     cars.map((el: ICar) => {
       const carField = new CarField(`${el.name}`, `${el.color}`,
         () => this.removeCar(el.id), () => this.selectCar(el.id, el.name, el.color));
@@ -62,6 +65,8 @@ export class GarageField extends BaseComponent {
   async removeCar(id: number): Promise<any> {
     await deleteCar(id);
     this.cars = this.cars.filter((c: ICar) => c.id !== id);
+    // this.carsWin = this.carsWin.filter((c: ICar) => c.id !== id);
     this.renderCars(this.cars);
+    // this.renderCarsWin(this.carsWin);
   }
 }

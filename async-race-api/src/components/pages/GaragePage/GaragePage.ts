@@ -20,16 +20,18 @@ export class GaragePage extends BaseComponent {
 
   private generateCorsBtn = new Button('GENERATE CARS');
 
-  private newCarName = '';
-
-  private newCarColor = '';
-
   private garageField = new GarageField((id: number, carName: string,
     carColor: string) => this.selectCar(id, carName, carColor));
 
   private colorInCreate = document.createElement('input');
 
   private colorInUpDate = document.createElement('input');
+
+  private newCarName = '';
+
+  private colorCarCreate = '';
+
+  private colorCarUpDate = '';
 
   constructor() {
     super('div', ['tooltip', 'garage-page']);
@@ -42,7 +44,7 @@ export class GaragePage extends BaseComponent {
     });
 
     this.createBtn.element.addEventListener('click', async (e) => {
-      const newCar = await createCar(this.newCarName, this.newCarColor);
+      const newCar = await createCar(this.newCarName, this.colorCarCreate);
       this.garageField.addCar(newCar);
       const inputCreateName = this.inputCreate.element as HTMLInputElement;
       inputCreateName.value = '';
@@ -57,6 +59,8 @@ export class GaragePage extends BaseComponent {
     const btnInFooter = document.createElement('div');
     this.colorInCreate.setAttribute('type', 'color');
     this.colorInUpDate.setAttribute('type', 'color');
+    this.colorCarCreate = this.colorInCreate.value;
+    this.colorCarUpDate = this.colorInUpDate.value;
     createCarField.className = 'create-car-field';
     upDateCarField.className = 'update-car-field';
     btnInFooter.className = 'btn-footer';
@@ -76,7 +80,7 @@ export class GaragePage extends BaseComponent {
     this.colorInCreate.addEventListener('input', (event) => {
       const target = event.target as HTMLInputElement;
       if (target) {
-        this.newCarColor = target.value;
+        this.colorCarCreate = target.value;
       }
     });
   }
@@ -97,14 +101,13 @@ export class GaragePage extends BaseComponent {
     this.colorInUpDate.addEventListener('input', (event) => {
       const target = event.target as HTMLInputElement;
       if (target) {
-        this.newCarColor = target.value;
+        this.colorCarUpDate = target.value;
       }
     });
 
     this.updateBtn.element.addEventListener('click', async (e) => {
-      const newCar = await upDateCar(id, this.newCarName, this.newCarColor);
-      this.garageField.upDateCar(id, this.newCarName, this.newCarColor);
-      const inputUpDateName = this.inputUpDate.element as HTMLInputElement;
+      await upDateCar(id, this.newCarName, this.colorCarUpDate);
+      this.garageField.upDateCar(id, this.newCarName, this.colorCarUpDate);
       inputUpDateName.value = '';
     });
   }

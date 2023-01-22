@@ -18,6 +18,7 @@ export const getCarsGarage = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
+  return false;
 };
 
 export const getCarGarage = async (id: number): Promise<any> => {
@@ -27,6 +28,7 @@ export const getCarGarage = async (id: number): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
+  return false;
 };
 
 export const createCar = async (carName: string, carColor: string): Promise<ICar[]> => {

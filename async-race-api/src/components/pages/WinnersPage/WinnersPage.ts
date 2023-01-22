@@ -25,10 +25,6 @@ export class WinnersPage extends BaseComponent {
         return el.id === carsWinners[i].id;
       }
     });
-    // for (let i = 0; i < carsWinners.length; i++) {
-    //   const id = carsWinners[i].id;
-    //   const carGarage = await getCarGarage(id);
-    // }
     this.renderTitle(carsWinners);
     this.renderTable(carsWinners, carsWinnersFromGarage);
   }
