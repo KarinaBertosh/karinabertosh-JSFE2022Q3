@@ -50,3 +50,18 @@ export const deleteCar = async (id: number): Promise<ICar[]> => {
   }).then((data) => data.json());
   return response;
 };
+
+export const upDateCar = async (id: number, carName: string, carColor: string): Promise<ICar[]> => {
+  const newCar = JSON.stringify({
+    name: carName,
+    color: carColor,
+  });
+  const response = await fetch(`${url}/garage/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: (newCar),
+  }).then((data) => data.json());
+  return response;
+};

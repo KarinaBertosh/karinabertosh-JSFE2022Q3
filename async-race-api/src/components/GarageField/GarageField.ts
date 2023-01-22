@@ -11,11 +11,14 @@ export class GarageField extends BaseComponent {
 
   private pagination = new Pagination();
 
+  private selectCar: (id: number, carName: string, carColor: string) => void;
+
   private cars = [];
 
-  constructor() {
+  constructor(selectCar: (id: number, carName: string, carColor: string) => void) {
     super('div', ['garage__field']);
     this.getCars();
+    this.selectCar = selectCar;
   }
 
   async getCars(): Promise<any> {
@@ -31,21 +34,33 @@ export class GarageField extends BaseComponent {
   }
 
   addCar(car: any): void {
+    this.element.innerHTML = '';
     this.cars = this.cars.concat(car);
     this.renderCars(this.cars);
+  }
+
+  upDateCar(id: number, carName: string, carColor: string): void {
+    this.element.innerHTML = '';
+    const newPosts = this.cars.map((car: ICar) => (
+      car.id === id
+        ? { ...car, name: carName, color: carColor }
+        : car
+    ));
+    this.renderCars(newPosts);
   }
 
   renderCars(cars: ICar[]): void {
     this.element.innerHTML = '';
     cars.map((el: ICar) => {
-      const carField = new CarField(`${el.name}`, `${el.color}`, () => this.removeCar(el.id));
+      const carField = new CarField(`${el.name}`, `${el.color}`,
+        () => this.removeCar(el.id), () => this.selectCar(el.id, el.name, el.color));
       this.element.appendChild(carField.element);
     });
     this.element.appendChild(this.pagination.element);
   }
 
   async removeCar(id: number): Promise<any> {
-    const car = await deleteCar(id);
+    await deleteCar(id);
     this.cars = this.cars.filter((c: ICar) => c.id !== id);
     this.renderCars(this.cars);
   }
