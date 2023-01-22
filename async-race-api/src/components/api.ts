@@ -1,4 +1,4 @@
-import { ICar } from "./type";
+import { ICar } from './type';
 
 const url = 'http://127.0.0.1:3000';
 
@@ -9,6 +9,7 @@ export const getCarsWinners = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
+  return null;
 };
 
 export const getCarsGarage = async (): Promise<any> => {
@@ -18,7 +19,7 @@ export const getCarsGarage = async (): Promise<any> => {
   } catch (err) {
     console.error(err);
   }
-  return false;
+  return null;
 };
 
 export const getCarGarage = async (id: number): Promise<any> => {

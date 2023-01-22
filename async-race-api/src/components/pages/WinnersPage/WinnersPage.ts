@@ -3,7 +3,7 @@ import { Title } from '../../Title/Title';
 import { Button } from '../../Button/Button';
 import { ICar, IWinCar } from '../../type';
 import { Pagination } from '../../Pagination/Pagination';
-import { getCarsGarage, getCarsWinners} from '../../api';
+import { getCarsGarage, getCarsWinners } from '../../api';
 import './style.scss';
 import { CarImage } from '../../CarImage/CarImage';
 
@@ -24,6 +24,7 @@ export class WinnersPage extends BaseComponent {
       for (let i = 0; i < carsWinners.length; i++) {
         return el.id === carsWinners[i].id;
       }
+      return false;
     });
     this.renderTitle(carsWinners);
     this.renderTable(carsWinners, carsWinnersFromGarage);
