@@ -3,7 +3,6 @@ import { GarageField } from '../../GarageField/GarageField';
 import { createCar } from '../../api';
 import { Button } from '../../Button/Button';
 import { Input } from '../../Input/Input';
-import { ICar } from '../../type';
 import './style.scss';
 
 export class GaragePage extends BaseComponent {
@@ -30,7 +29,6 @@ export class GaragePage extends BaseComponent {
   constructor(carsInGarage?: () => any) {
     super('div', ['tooltip', 'garage-page']);
     this.render();
-    const cars: any = carsInGarage;
     this.inputCreate.element.addEventListener('input', (event) => {
       const target = event.target as HTMLInputElement;
       if (target) {
@@ -39,7 +37,6 @@ export class GaragePage extends BaseComponent {
     });
     this.createBtn.element.addEventListener('click', async (e) => {
       const newCar = await createCar(this.newCarName, this.newCarColor);
-      console.log(newCar);
       this.garageField.addCar(newCar);
     });
 

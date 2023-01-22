@@ -3,7 +3,7 @@ import { Title } from '../Title/Title';
 import { CarField } from '../CarField/CarField';
 import { Pagination } from '../Pagination/Pagination';
 import { ICar } from '../type';
-import { getCarsGarage } from '../api';
+import { deleteCar, getCarsGarage } from '../api';
 import './style.scss';
 
 export class GarageField extends BaseComponent {
@@ -31,15 +31,22 @@ export class GarageField extends BaseComponent {
   }
 
   addCar(car: any): void {
-    const newCars = this.cars.concat(car);
-    this.renderCars(newCars);
+    this.cars = this.cars.concat(car);
+    this.renderCars(this.cars);
   }
 
   renderCars(cars: ICar[]): void {
+    this.element.innerHTML = '';
     cars.map((el: ICar) => {
-      const carField = new CarField(`${el.name}`, `${el.color}`);
+      const carField = new CarField(`${el.name}`, `${el.color}`, () => this.removeCar(el.id));
       this.element.appendChild(carField.element);
     });
     this.element.appendChild(this.pagination.element);
+  }
+
+  async removeCar(id: number): Promise<any> {
+    const car = await deleteCar(id);
+    this.cars = this.cars.filter((c: ICar) => c.id !== id);
+    this.renderCars(this.cars);
   }
 }

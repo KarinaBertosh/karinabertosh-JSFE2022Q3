@@ -36,6 +36,7 @@
     "no-param-reassign": ["error", {
       "props": false
     }],
-    "array-callback-return":"off"
+    "array-callback-return":"off",
+    "linebreak-style": 0
   }
 }

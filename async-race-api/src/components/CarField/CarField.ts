@@ -13,7 +13,7 @@ export class CarField extends BaseComponent {
 
   private bBtn = new Button('B');
 
-  constructor(nameCar: string, color: string) {
+  constructor(nameCar: string, color: string, removeCar: () => void) {
     super('div', ['car__field']);
     const btn = document.createElement('div');
     const carField = document.createElement('div');
@@ -32,5 +32,9 @@ export class CarField extends BaseComponent {
     this.element.appendChild(carField);
     carField.appendChild(carImage.element);
     carField.appendChild(flag);
+
+    this.removeBtn.element.addEventListener('click', (event) => {
+      removeCar();
+    });
   }
 }

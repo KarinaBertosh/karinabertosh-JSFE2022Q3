@@ -43,3 +43,10 @@ export const createCar = async (carName: string, carColor: string): Promise<ICar
   }).then((data) => data.json());
   return response;
 };
+
+export const deleteCar = async (id: number): Promise<ICar[]> => {
+  const response = await fetch(`${url}/garage/${id}`, {
+    method: 'DELETE',
+  }).then((data) => data.json());
+  return response;
+};
