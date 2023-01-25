@@ -1,18 +1,18 @@
-import { ICar } from './type';
+import { ICar, IWinCar } from './type';
 
 const url = 'http://127.0.0.1:3000';
 
-export const getCarsWinners = async (): Promise<any> => {
+export const getCarsWinners = async () => {
   try {
     const carsWinners = await fetch(`${url}/winners`).then((data) => data.json());
     return carsWinners;
   } catch (err) {
     console.error(err);
   }
-  return null;
+  return false;
 };
 
-export const getCarsGarage = async (): Promise<any> => {
+export const getCarsGarage = async () => {
   try {
     const carsGarage = await fetch(`${url}/garage`).then((data) => data.json());
     return carsGarage;
@@ -22,7 +22,7 @@ export const getCarsGarage = async (): Promise<any> => {
   return null;
 };
 
-export const getCarGarage = async (id: number): Promise<any> => {
+export const getCarGarage = async (id: number) => {
   try {
     const carGarage = await fetch(`${url}/garage/${id}`).then((data) => data.json());
     return carGarage;

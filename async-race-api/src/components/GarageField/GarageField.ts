@@ -3,7 +3,7 @@ import { Title } from '../Title/Title';
 import { CarField } from '../CarField/CarField';
 import { Pagination } from '../Pagination/Pagination';
 import { ICar } from '../type';
-import { deleteCar, getCarsGarage, getCarsWinners } from '../api';
+import { deleteCar, getCarsGarage } from '../api';
 import './style.scss';
 
 export class GarageField extends BaseComponent {
@@ -15,17 +15,14 @@ export class GarageField extends BaseComponent {
 
   private cars = [];
 
-  private carsWin = [];
-
   constructor(selectCar: (id: number, carName: string, carColor: string) => void) {
     super('div', ['garage__field']);
     this.getCars();
     this.selectCar = selectCar;
   }
 
-  async getCars(): Promise<any> {
+  async getCars(): Promise<void> {
     this.cars = await getCarsGarage();
-    this.carsWin = await getCarsWinners();
     this.renderCars(this.cars);
   }
 
@@ -35,14 +32,13 @@ export class GarageField extends BaseComponent {
     this.element.appendChild(this.page.element);
   }
 
-  addCar(car: any): void {
+  addCar(oneCar: any): void {
     this.element.innerHTML = '';
-    this.cars = this.cars.concat(car);
+    this.cars = this.cars.concat(oneCar);
     this.renderCars(this.cars);
   }
 
   upDateCar(id: number, carName: string, carColor: string): void {
-    // this.element.innerHTML = '';
     const newCars = this.cars.map((car: ICar) => (
       car.id === id
         ? { ...car, name: carName, color: carColor }
@@ -62,11 +58,9 @@ export class GarageField extends BaseComponent {
     this.element.appendChild(this.pagination.element);
   }
 
-  async removeCar(id: number): Promise<any> {
+  async removeCar(id: number) {
     await deleteCar(id);
     this.cars = this.cars.filter((c: ICar) => c.id !== id);
-    // this.carsWin = this.carsWin.filter((c: ICar) => c.id !== id);
     this.renderCars(this.cars);
-    // this.renderCarsWin(this.carsWin);
   }
 }
