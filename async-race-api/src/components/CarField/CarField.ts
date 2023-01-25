@@ -33,11 +33,11 @@ export class CarField extends BaseComponent {
     carField.appendChild(carImage.element);
     carField.appendChild(flag);
 
-    this.removeBtn.element.addEventListener('click', (event) => {
+    this.removeBtn.element.addEventListener('click', () => {
       removeCar();
     });
 
-    this.selectBtn.element.addEventListener('click', (event) => {
+    this.selectBtn.element.addEventListener('click', () => {
       selectCar();
     });
   }

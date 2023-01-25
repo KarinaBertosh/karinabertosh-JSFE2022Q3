@@ -4,8 +4,8 @@ import { Button } from '../../Button/Button';
 import { ICar, IWinCar } from '../../type';
 import { Pagination } from '../../Pagination/Pagination';
 import { getCarsGarage, getCarsWinners } from '../../api';
-import './style.scss';
 import { CarImage } from '../../CarImage/CarImage';
+import './style.scss';
 
 export class WinnersPage extends BaseComponent {
   private winnersTitlePage = new Title('PAGE #1', ['small']);
@@ -17,10 +17,10 @@ export class WinnersPage extends BaseComponent {
     this.getCars();
   }
 
-  async getCars(): Promise<any> {
+  async getCars(): Promise<void> {
     const carsWinners = await getCarsWinners();
     const carsGarage = await getCarsGarage();
-    const carsWinnersFromGarage = carsGarage.filter((el: any) => {
+    const carsWinnersFromGarage = carsGarage.filter((el: ICar) => {
       for (let i = 0; i < carsWinners.length; i++) {
         return el.id === carsWinners[i].id;
       }

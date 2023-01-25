@@ -43,7 +43,7 @@ export class GaragePage extends BaseComponent {
       }
     });
 
-    this.createBtn.element.addEventListener('click', async (e) => {
+    this.createBtn.element.addEventListener('click', async () => {
       const newCar = await createCar(this.newCarName, this.colorCarCreate);
       this.garageField.addCar(newCar);
       const inputCreateName = this.inputCreate.element as HTMLInputElement;
@@ -85,7 +85,7 @@ export class GaragePage extends BaseComponent {
     });
   }
 
-  async selectCar(id: number, carName: string, carColor: string): Promise<any> {
+  async selectCar(id: number, carName: string, carColor: string): Promise<void> {
     const inputUpDateName = this.inputUpDate.element as HTMLInputElement;
     const colorInUpDate = this.colorInUpDate as HTMLInputElement;
     inputUpDateName.value = carName;
@@ -105,7 +105,7 @@ export class GaragePage extends BaseComponent {
       }
     });
 
-    this.updateBtn.element.addEventListener('click', async (e) => {
+    this.updateBtn.element.addEventListener('click', async () => {
       await upDateCar(id, this.newCarName, this.colorCarUpDate);
       this.garageField.upDateCar(id, this.newCarName, this.colorCarUpDate);
       inputUpDateName.value = '';
