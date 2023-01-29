@@ -1,0 +1,22 @@
+.next-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.deactivated {
+  background-color: #303030;
+}
+.deactivated:hover {
+  background-color: #303030;
+}
+.deactivated:active {
+  background-color: #303030;
+}
+.deactivated.active {
+  background-color: #303030;
+  pointer-events: none;
+}
+
+.activated {
+  background-color: #008966;
+}/*# sourceMappingURL=NextLevelBtn.css.map */

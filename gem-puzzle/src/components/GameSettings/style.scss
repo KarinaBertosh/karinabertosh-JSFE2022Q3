@@ -1,0 +1,16 @@
+.settings {
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    width: 400px;
+    height: 25px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .settings {
+        width: 300px;  
+    }
+}

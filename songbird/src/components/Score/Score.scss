@@ -1,0 +1,12 @@
+.score {
+    color: azure;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 640px) and (max-width: 1000px) {
+    .score {
+        width: 110px;
+    }
+}
+
