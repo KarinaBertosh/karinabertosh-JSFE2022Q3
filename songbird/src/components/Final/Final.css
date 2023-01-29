@@ -1,0 +1,29 @@
+.finish {
+  background-color: #303030;
+  padding: 4rem 2rem;
+}
+.finish p {
+  text-align: center !important;
+  font-size: 25px;
+  font-weight: 300;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.congratulations {
+  text-align: center !important;
+  font-size: 65px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: white;
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+  .congratulations {
+    font-size: 35px;
+  }
+  .finish p {
+    font-size: 14px;
+  }
+}/*# sourceMappingURL=Final.css.map */

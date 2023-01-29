@@ -1,0 +1,21 @@
+.list-questions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background-color: #008966;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.item-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  border-color: #007c5d;
+}
+
+.active {
+  background-color: #007c5d;
+}/*# sourceMappingURL=ListQuestions.css.map */
